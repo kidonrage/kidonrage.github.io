@@ -126,6 +126,9 @@ h1,p{
 ol, ul {
 	list-style: none;
 }
+a:focus{
+	outline: none !important;
+}
 blockquote, q {
 	quotes: none;
 }
@@ -145,7 +148,7 @@ table {
 
 }
 /*==========  Главная секция  ==========*/
-section.main{
+section#main_block{
 	color: #fff;
 	background: url(img/main.jpg) no-repeat center top;
 	background-image: linear-gradient(to top, rgba(41,62,82,.2), rgba(41,62,82,.2)), url(img/main.jpg);
@@ -153,12 +156,12 @@ section.main{
 	position: relative;
 	padding-bottom: 0;
 }
-section.main header{
+section#main_block header{
 	text-align: center;
 	font-weight: 500;
 	margin: 232px auto 270px auto;
 }
-section.main header h1{
+section#main_block header h1{
 	font-size: 36px;
 	font-weight: 200;
 	margin-top: 26px;
@@ -175,6 +178,10 @@ section.main header h1{
 .dropdown a{
 	color: #000;
 	text-transform: uppercase;
+	padding: 15px 60px 5px 0px;
+}
+.drop>a{
+	padding: 0;
 }
 .dropdown>li{
 	padding: 18px 40px 18px 88px;
@@ -230,7 +237,7 @@ section.main header h1{
 section{
 	padding-bottom: 28px;
 }
-.desc p{
+#desc p{
 	font-size: 30px;
 	text-align: center;
 	max-width: 800px;
@@ -269,19 +276,19 @@ section h2{
 .adv_item{
 	margin-bottom: 50px;
 }
-.advantages ul li:nth-child(even) .adv_img{
+#advantages ul li:nth-child(even) .adv_img{
 	margin-left: 65px;
 }
 /*==========  Залы  ==========*/
-.rooms{
+#rooms{
 	overflow-x: hidden;
 	padding-bottom: 0;
 }
-.rooms h2{
+#rooms h2{
 	margin-bottom: 48px;
 	margin-top: 4px;
 }
-.rooms .nav li{
+#rooms .nav li{
 	float: none;
 	display: inline-block;
 }
@@ -293,7 +300,7 @@ section h2{
 .nav-tabs {
 	text-align: center;
 }
-.rooms .nav-tabs li a{
+#rooms .nav-tabs li a{
 	color: #727272;
 	margin-right: 0px;
 	background: #aecae6;
@@ -308,7 +315,7 @@ section h2{
 .nav-tabs li:hover{
 	cursor: pointer;
 }
-.rooms ul.nav-tabs li.active a{
+#rooms ul.nav-tabs li.active a{
 	background: #f2f9ff;
 	border: 1px solid #8ba5bf;
 	border-bottom: 1px solid #f2f9ff;
@@ -421,7 +428,7 @@ button.slider-nav:hover{
 	margin-left: 260px;
 }
 /*==========  Секция скачивания меню  ==========*/
-.menu{
+#menu{
 	background: linear-gradient(to top, #8aaccf, #9cbfe1);
 }
 .extra h2{
@@ -455,7 +462,8 @@ footer button{
 	box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 .extra button::before,
-footer button::before {
+footer button::before,
+.ps_item button::before {
 	content: '';
 	z-index: -1;
 	position: absolute;
@@ -476,13 +484,15 @@ footer button::before {
 	transition-timing-function: cubic-bezier(0.7,0,0.9,1);
 }
 .extra button:hover::before,
-footer button:hover::before{
+footer button:hover::before,
+.ps_item button:hover::before{
 	-webkit-transform: scale3d(10, 1.9, 1);
 	transform: scale3d(10, 3, 1);
 }
 /*==========  Секция Галереи  ==========*/
-.gallery{
+#gallery{
 	margin-top: 90px;
+	overflow: hidden;
 }
 .grid-item img{
 	display: block;
@@ -491,7 +501,7 @@ footer button:hover::before{
 .grid div div{
 	float: left;
 }
-.grid div div div{
+.grid>div>div>div{
 	margin-right: 5px;
 	margin-bottom: 5px;
 }
@@ -499,9 +509,17 @@ footer button:hover::before{
 	margin: 0 auto;
 }
 .grid-item--width1,
+.grid-item--width2,
+.grid-item--width3,
+.grid-item--width4,
+.grid-item--width5,
+.grid-item--width6{
+	position: relative;
+}
+.grid-item--width1,
 .grid-item--width1 img { width: 280px;}
 .grid-item--width2,
-.grid-item--width2 img { width: 277px;}
+.grid-item--width2 img { width: 277px;height: 179px;}
 .grid-item--width3,
 .grid-item--width3 img { width: 546px;  }
 .grid-item--width4,
@@ -515,7 +533,79 @@ footer button:hover::before{
 	display: block;
 	clear: both;
 }
-/*==========  Акции и предложения  ==========*/
+.grid figure {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	background: #3085a3;
+	text-align: center;
+	cursor: pointer;
+}
+.grid figcaption>div{
+	position: absolute;top: 0;left: 0;width: 100%;height: 100%;display:table;
+}
+.grid figcaption>div>div{
+	float: none;display:table-cell;vertical-align:middle;
+}
+figure.effect-chico figcaption {
+	padding: 3em;
+	float: none;
+}
+figure.effect-chico:hover img {
+	opacity: 0.5;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+figure.effect-chico img {
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(1.12);
+	transform: scale(1.12);
+}
+.grid figure figcaption, .grid figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+figure.effect-chico:hover figcaption::before, figure.effect-chico:hover .plus {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	text-decoration: none;
+}
+figure.effect-chico .plus a{
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+	font-size: 70px;
+	vertical-align: middle;
+	color: #fff;
+	font-weight: 300;
+	font-family: Circe;
+	padding:35%;
+}
+figure.effect-chico .plus a:hover,
+figure.effect-chico .plus a:focus{
+	text-decoration: none;
+}
+figure.effect-chico figcaption::before, figure.effect-chico .plus {
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	float: none;text-align:center;
+}
+figure.effect-chico figcaption::before {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	bottom: 30px;
+	left: 30px;
+	border: 1px solid #fff;
+	content: '';
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
 .ps_item{
 	text-align: center;
 	margin: 0 35px;
@@ -539,12 +629,20 @@ footer button:hover::before{
 	font-family: Roboto;
 	line-height: 18px;
 }
-.ps_item button{
+.ps_item button,
+input[type="submit"]{
 	border: 1px solid #6d89a6;
 	background: linear-gradient(to top, #dbe8f5, #eaf3fc);
 	box-shadow: 0 0px 5px rgba(0,0,0,0.3);
 	color: #252525;
 	margin-top: 28px;
+}
+.ps_item button::before{
+	background: linear-gradient(to top, rgba(109, 137, 166, 0), rgba(255, 255, 255, 0.5)), linear-gradient(to top, rgba(109, 137, 166, 0.5), rgba(109, 137, 166, 0.5));
+}
+.ps_item button:hover::before{
+	-webkit-transform: scale3d(12, 1.9, 1);
+	transform: scale3d(12, 3, 1);
 }
 .prom_slider .slider-nav{
 	top: 20%;
@@ -561,10 +659,10 @@ footer button:hover::before{
 	right: -75px;
 }
 /*==========  Подарки и скидки  ==========*/
-.gifts{
+#gifts{
 	background: #f2f9ff;
 }
-.gifts h2 span{
+#gifts h2 span{
 	font-family: Roboto;
 	font-weight: 300;
 }
@@ -606,58 +704,81 @@ footer button:hover::before{
 	font-family: Roboto;
 }
 /*==========  Скачивание каталога  ==========*/
-.catalog{
-	background: linear-gradient(to top, rgba(40,92,143,.3), rgba(41,62,82,.2)), url(img/catalog_bg.jpg) no-repeat center bottom;
+#catalog{
+	position: relative;
+
+	padding-bottom: 0;
+	background: url(img/menu.png) no-repeat center center;
 }
-.catalog h2{
+.scrollflow_container{
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+.scrollflow_container>div{
+	position: absolute;
+	top: -40%;
+	left: 0px;
+	height: 140%;
+	width: 118%;
+	background: linear-gradient(to top, rgba(40,92,143,.3), rgba(41,62,82,.2)), url(img/catalog_bg.jpg) no-repeat center center;
+	background-size:  100% 100%;
+}
+#catalog h2{
 	margin-top: 140px;
 	text-align: left;
 }
-.catalog button{
+#catalog button{
 	margin-bottom: 140px;
 	margin-right: 60px;
 }
-.catalog img{
+#catalog img{
 	top:120px;
 }
-.catalog button{
+#catalog button{
 	background: linear-gradient(to top, rgba(109,137,166,.0), rgba(275,275,275,.2)),linear-gradient(to top, rgba(109,137,166,.35), rgba(109,137,166,.35));
 	box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
-.catalog button::before {
+#catalog button::before {
 	background: linear-gradient(to top, rgba(109,137,166,.5), rgba(109,137,166,.5));
 }
 /*==========  Партнёры  ==========*/
-.partners h2{
+#partners h2{
 	margin-top: 80px;
 	margin-bottom: 10px;
 }
-.partners ul{
+#partners ul{
 	text-align: center;
 }
-.partners ul li{
+#partners ul li{
 	display: inline-block;
 	margin-right: 40px;
 }
-.partners ul li:last-child{
+#partners ul li:last-child{
 	margin-right: 0;
 }
-.partners ul li img{
+#partners ul li img{
 	margin-bottom: 15px;
 }
-.partners ul li p{
+#partners ul li p{
 	font-family: Roboto;
 	font-weight: 300;
 	font-size: 16px;
 	margin-bottom: 0px;
 }
-.partners p.phone{
+#partners p.phone{
 	margin-top: 5px;
 	font-weight: 500;
 }
 /*==========  Карта  ==========*/
 .map{
 	padding-bottom: 0;
+}
+.map2{
+	display: none;
 }
 iframe{
 	width: 100%;
@@ -714,13 +835,59 @@ footer li a{
 footer li:hover a{
 	color: #6d89a6;
 }
+form input,
+textarea{
+	padding: 12px 55px 12px 25px;
+	background: #fafafa;
+	border: 1px solid #c9c9c9;
+	border-radius: 22px;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+form div{
+	display: inline-block;
+}
+input[type="submit"]{
+	float: right;
+	margin-top: 3px;
+	padding: 12px 45px;
+}
+textarea:focus, input:focus{
+	outline: none;
+}
+*:focus {
+	outline: none;
+}
+input:valid {
+	border-color: #b7cb86;
+}
 
+input:invalid {
+	border-color: #ea9585;
+}
+form div input{
+	display: block;
+}
+form div:last-child{
+	float: right;
+	margin-left: 20px;
+	text-align: right;
+	max-width: 435px
+}
+form input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {font-size: 16px;color: #b3b3b3;}
+form input::-moz-placeholder,
+textarea::-moz-placeholder{font-size: 16px;color: #b3b3b3;}/* Firefox 19+ */
+form input:-moz-placeholder,
+textarea:-moz-placeholder{font-size: 16px;color: #b3b3b3;}/* Firefox 18- */
+form input:-ms-input-placeholder,
+textarea:-ms-input-placeholder{font-size: 16px;color: #b3b3b3;}
 /*==========  Desktop First Method  ==========*/
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
 	/*==========  Залы  ==========*/
-	.rooms .nav-tabs li a{
+	#rooms .nav-tabs li a{
 		width: 190px;
 		padding: 20px 0px 16px 0;
 		font-size: 17px;	
@@ -739,7 +906,7 @@ footer li:hover a{
 	.grid-item--width1,
 	.grid-item--width1 img { width: 250px; height: 100%;}
 	.grid-item--width2,
-	.grid-item--width2 img { width: 206px; height: 100%;}
+	.grid-item--width2 img { width: 206px; height: 137px;}
 	.grid-item--width3,
 	.grid-item--width3 img { width: 418px;}
 	.grid-item--width4,
@@ -753,20 +920,29 @@ footer li:hover a{
 		display: block;
 		clear: both;
 	}
+	.grid > div > div > div {
+		margin-right: 5px;
+		margin-bottom: 5px;
+	}
 	/*==========  Скачивание каталога  ==========*/
-	.catalog h2{
+	#catalog h2{
 		margin-top: 100px;
 		text-align: center;
 	}
-	.catalog button{
+	#catalog button{
 		margin-bottom: 100px;
 		margin-right: 0;
 	}
-	.catalog img{
+	#catalog img{
 		top:50px;
 	}
+	.scrollflow_container>div{
+		top: -30%;
+		height: 130%;
+		width: 126%;
+	}
 	/*==========  Партнёры  ==========*/
-	.partners ul li{
+	#partners ul li{
 		display: block;
 		margin: 0;
 		margin-top: 40px;
@@ -775,11 +951,11 @@ footer li:hover a{
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
 	/*==========  Главная секция  ==========*/
-	section.main header{
-		margin: 220px auto 240px auto;
+	section#main_block header{
+		margin: 210px auto 220px auto;
 	}
 	/*==========  Залы  ==========*/
-	.rooms .nav-tabs li a{
+	#rooms .nav-tabs li a{
 		width: 140px;
 		padding: 20px 0px 16px 0;
 		font-size: 15px;	
@@ -793,14 +969,14 @@ footer li:hover a{
 	.extra h2{
 		margin: 20px 0 20px 0;
 	}
-	.menu button{
+	#menu button{
 		margin-bottom: 160px;
 	}
 	/*==========  Секция Галереи  ==========*/
 	.grid-item--width1,
 	.grid-item--width1 img { width: 185px; height: 100%;}
 	.grid-item--width2,
-	.grid-item--width2 img { width: 170px; height: 100%;}
+	.grid-item--width2 img { width: 170px; height: 112px;}
 	.grid-item--width3,
 	.grid-item--width3 img { width: 345px;}
 	.grid-item--width4,
@@ -813,6 +989,10 @@ footer li:hover a{
 		content: "";
 		display: block;
 		clear: both;
+	}
+	figure.effect-chico .plus a{
+		font-size: 40px;
+		padding:35%;
 	}
 	.gallery .lslide{
 		width: 720px !important;
@@ -858,32 +1038,55 @@ footer li:hover a{
 		margin-bottom: 0;
 	}
 	/*==========  Скачивание каталога  ==========*/
-	.catalog h2{
+	#catalog h2{
 		margin-top: 40px;
 	}
-	.catalog button{
+	#catalog button{
 		margin-bottom: 200px;
 	}
-	.catalog{
+	#catalog{
 		margin-bottom: 50px;
 	}
-	.catalog img{
+	#catalog img{
 		width: 380px;
 		top:180px;
 		margin-left: 160px;
 	}
+	.scrollflow_container>div{
+		top: -28%;
+		height: 130%;
+		width: 145%;
+	}
+	.rd_slider3 .rd_slider_info>div, .rd_slider1 .rd_slider_info>div {
+		margin-left: 100px;
+	}
+
 }
 /* iPad */
 @media only screen and (width : 768px){
-	.main .soc{
+	#main_block .soc{
 		float: right;
 	}
-	.main .dropdown {
+	#main_block .dropdown {
 		display: inline-block;
 	}
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+	.grid div{
+		position: static!important;
+	}
+	.grid figure {
+		display: inline-block;
+		float: none;
+		margin: 0px auto;
+		width: 100%;
+		background: linear-gradient(to top, #8aaccf, #9cbfe1);
+	}
+	figure.effect-chico .plus a{
+		font-size: 70px;
+		padding:40%;
+	}
 	.dropdown{
 		display: block;
 	}
@@ -891,7 +1094,7 @@ footer li:hover a{
 		float: none;
 		text-align: center;
 	}
-	.main img{
+	#main_block img{
 		width: 50%;
 	}
 	/*==========  Преимущества  ==========*/
@@ -918,16 +1121,16 @@ footer li:hover a{
 		letter-spacing: -0.5px;
 		margin: 0 auto 0 auto; 
 	}
-	.advantages ul li:nth-child(even) .adv_img{
+	#advantages ul li:nth-child(even) .adv_img{
 		margin: 0 auto 20px auto;
 	}
 	/*==========  Залы  ==========*/
-	.rooms .nav-tabs li a{
+	#rooms .nav-tabs li a{
 		width: 100%;
 		padding: 20px 0px 16px 0;
 		font-size: 15px;	
 	}
-	.rooms .nav li{
+	#rooms .nav li{
 		float: none;
 		display: block;
 	}
@@ -942,26 +1145,26 @@ footer li:hover a{
 		padding: 0 5px; 
 	}
 	/*==========  Скачивание каталога  ==========*/
-	.catalog h2{
+	#catalog h2{
 		margin-top: 40px;
 	}
-	.catalog button{
+	#catalog button{
 		margin-bottom: 20%;
 	}
-	.catalog{
+	#catalog{
 		margin-bottom: 50px;
 	}
-	.catalog img,
-	.menu img{
+	#catalog img,
+	#menu img{
 		width: 50%;
 		top:180px;
 		margin-left: 0;
 		left: 22%;
 	}
-	.menu button{
+	#menu button{
 		margin-bottom: 70px;
 	}
-	.menu img{
+	#menu img{
 		width: 60%;
 		top:170px;
 		margin-left: 0;
@@ -980,13 +1183,56 @@ footer li:hover a{
 	.grid-item--width5 img { display: block;width: 60%; height: 100%;margin: 0 auto;}
 	.grid-item--width6{ width: 100%; height: 100%;}
 	.grid-item--width6 img { display: block;width: 60%; height: 100%;margin: 0 auto;}
+	.grid > div > div > div {
+		margin-right: 0px;
+		margin-bottom: 0px;
+	}
+	.rd_slider3 .rd_slider_info>div, .rd_slider1 .rd_slider_info>div {
+		margin-left: 90px;
+	}
+	.rd_slider_info img{
+		width: 380px;
+	}
+	form input,
+	textarea{
+		padding: 12px 55px 12px 25px;
+		width: 80%;
+		margin: 0 auto;
+	}
+	form textarea{
+		margin: 0 auto 10px auto;
+		display: block;
+	}
+	input[type="submit"] {
+		float: none;
+	}
+	form div:last-child{
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	form div{
+		display: block;
+		width: 100%;
+	}
+	form div input{
+		display: block;
+	}
+	form div:last-child{
+		float: none;
+	}
+	.map{
+	display: none;
+}
+.map2{
+	display: block;
+}
 }
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-	section.main header{
+	section#main_block header{
 		margin: 160px auto 140px auto;
 	}
-	.main img{
+	#main_block img{
 		width: 90%;
 	}
 	.gallery .lslide{
@@ -1012,7 +1258,7 @@ footer li:hover a{
 	.grid-item--width5 img { display: block;width: 80%; height: 100%;margin: 0 auto;}
 	.grid-item--width6{ width: 100%; height: 100%;}
 	.grid-item--width6 img { display: block;width: 80%; height: 100%;margin: 0 auto;}
-	.partners ul li{
+	#partners ul li{
 		display: block;
 		margin-right: 0px;
 		margin-top: 30px;
@@ -1043,14 +1289,18 @@ footer li:hover a{
 	.rd_slider_info>div {
 		margin-left: 0px;
 	}
-	.catalog img,
-	.menu img{
+	#catalog img,
+	#menu img{
 		width: 70%;
 		top:180px;
 		margin-left: 0;
 		left: 16%;
 	}
-
+	.scrollflow_container>div{
+		top: -45%;
+		height: 155%;
+		width: 220%;
+	}
 	button.slider-nav{
 		background: rgba(275,275,275,0.8);
 	}
@@ -1061,10 +1311,10 @@ footer li:hover a{
 }
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
-	section.main header{
+	section#main_block header{
 		margin: 120px auto 140px auto;
 	}
-	section.main header h1{
+	section#main_block header h1{
 		font-size: 30px;
 	}
 	/*==========  Секция Галереи  ==========*/
@@ -1101,19 +1351,27 @@ footer li:hover a{
 	.extra button{
 		padding: 10px 25px;
 	}
-	.menu button{
+	#menu button{
 		margin-bottom: 30px;
 	}
-	.menu img,
-	.catalog img{
+	#menu img,
+	#catalog img{
 		width: 80%;
 		margin-left: 0;
 		left: 10%;
 	}
-	.menu img{
+	#menu img{
 		top: 200px;
 	}
-	section.catalog img{
+	.scrollflow_container>div{
+		top: -45%;
+		height: 155%;
+		width: 350%;
+	}
+	#catalog button{
+		margin-bottom: 30%;
+	}
+	section#catalog img{
 		top: 210px;
 	}
 	button.slider-nav{

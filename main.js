@@ -1,4 +1,17 @@
-
+$(function() {
+  $('a.menu_link').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
 $(".rd_slider1").lightSlider({
     loop:false,
     keyPress:true,
@@ -31,7 +44,7 @@ var d = 0;
 $('a[href="#room2"]').on('shown.bs.tab', function (e) {
     i++
     if(i==1){
-     $('.image-gallery2').lightSlider({
+       $('.image-gallery2').lightSlider({
         gallery:true,
         item:1,
         autoWidth: true,
@@ -47,7 +60,7 @@ $('a[href="#room2"]').on('shown.bs.tab', function (e) {
             $('.image-gallery2').removeClass('cS-hidden');
         }  
     });
-     $(".rd_slider2").lightSlider({
+       $(".rd_slider2").lightSlider({
         loop:false,
         keyPress:true,
         item:2,
@@ -56,21 +69,21 @@ $('a[href="#room2"]').on('shown.bs.tab', function (e) {
         nextHtml: "<button class='slider-nav sn-next'><i class='icon-right-open-big'></i></button>",
         prevHtml: "<button class='slider-nav sn-prev'><i class='icon-left-open-big'></i></button>",
         responsive : [
-            {
-                breakpoint:768,
-                settings: {
-                    item:1,
-                    slideMove:1
-                  }
+        {
+            breakpoint:768,
+            settings: {
+                item:1,
+                slideMove:1
             }
+        }
         ]
     });
- }
+   }
 });
 $('a[href="#room3"]').on('shown.bs.tab', function (e) {
     j++
     if(j==1){
-     $('.image-gallery3').lightSlider({
+       $('.image-gallery3').lightSlider({
         gallery:true,
         item:1,
         autoWidth: true,
@@ -86,7 +99,7 @@ $('a[href="#room3"]').on('shown.bs.tab', function (e) {
             $('.image-gallery3').removeClass('cS-hidden');
         }  
     });
-     $(".rd_slider3").lightSlider({
+       $(".rd_slider3").lightSlider({
         loop:false,
         keyPress:true,
         item:1,
@@ -94,12 +107,12 @@ $('a[href="#room3"]').on('shown.bs.tab', function (e) {
         nextHtml: "<button class='slider-nav sn-next'><i class='icon-right-open-big'></i></button>",
         prevHtml: "<button class='slider-nav sn-prev'><i class='icon-left-open-big'></i></button>",
     });
- }
+   }
 });
 $('a[href="#room4"]').on('shown.bs.tab', function (e) {
     k++
     if(k==1){
-     $('.image-gallery4').lightSlider({
+       $('.image-gallery4').lightSlider({
         gallery:true,
         item:1,
         autoWidth: true,
@@ -115,7 +128,7 @@ $('a[href="#room4"]').on('shown.bs.tab', function (e) {
             $('.image-gallery4').removeClass('cS-hidden');
         }  
     });
-     $(".rd_slider4").lightSlider({
+       $(".rd_slider4").lightSlider({
         loop:false,
         keyPress:true,
         item:1,
@@ -123,12 +136,12 @@ $('a[href="#room4"]').on('shown.bs.tab', function (e) {
         nextHtml: "<button class='slider-nav sn-next'><i class='icon-right-open-big'></i></button>",
         prevHtml: "<button class='slider-nav sn-prev'><i class='icon-left-open-big'></i></button>",
     });
- }
+   }
 });
 $('a[href="#room5"]').on('shown.bs.tab', function (e) {
     d++
     if(d==1){
-     $('.image-gallery5').lightSlider({
+       $('.image-gallery5').lightSlider({
         gallery:true,
         item:1,
         autoWidth: true,
@@ -144,7 +157,7 @@ $('a[href="#room5"]').on('shown.bs.tab', function (e) {
             $('.image-gallery5').removeClass('cS-hidden');
         }  
     });
- }
+   }
 });
 $('.prom_slider').slick({
     slidesToShow: 2,
@@ -180,3 +193,9 @@ $('.prom_slider').slick({
     // instead of a settings object
     ]
 });
+$( document ).ready( function( )
+{
+    $( ".scrollflow_container" ).ScrollFlow({
+        durationOnScroll: 800
+    });
+} );
