@@ -1,0 +1,260 @@
+/* These are just the demo styles and these can be removed and Orbit 
+will still work like a champ (except any content block needs a background which
+our demo gets from this sheet) */
+.i-container{
+            width: 1005px;
+            margin: 60px auto !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .h-wrap{
+            margin-bottom: 45px;
+        }
+        .c-wrap{
+            margin-top: 45px;
+            display: none;
+            width: 1005px;
+            float: left;
+        }
+        .c-wrap-0{
+            margin-top: 45px;
+            width: 1005px;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .box-big{
+            width: 125px;
+            height: 75px;
+            border: 1.5px solid rgb(255,164,35);
+            margin: 0 5px 0 5px;
+            color: rgb(59,59,59);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+
+        }
+        .box-big:visited{
+            background-color: rgb(255,226,186);
+        }
+        .box-big:focus{
+            background-color: rgb(255,226,186);
+        }
+        .box-big:active{
+            background-color: rgb(255,226,186);
+        }
+        .box-big:hover{
+            text-decoration: none;
+        }
+        .b-b-ib0{
+            width: 125px;
+            height: 75px;
+            border: 1.5px solid rgb(255,164,35);
+            margin: 0 5px 0 5px;
+            color: rgb(59,59,59);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background-color: rgb(255,226,186);
+        }
+        .b-b-ib0:hover{
+            text-decoration: none;
+        }
+        .b-b-c{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .box-small{
+            width: 60px;
+            height: 40px;
+            border-top: 2px solid  rgb(220,220,220);
+            border-bottom: 2px solid  rgb(220,220,220);
+            border-right: 1px solid  rgb(220,220,220);
+            border-left: 1px solid  rgb(220,220,220);
+            padding: 0 9px 0 9px;
+            color: rgb(213,222,224);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .box-small:focus{
+            background-color: rgb(255,164,35);
+            border: 1px solid  rgb(255,164,35);
+            color: rgb(255,255,255);
+            text-decoration: none;
+        }
+        .box-small.loaded{
+            background-color: rgb(255,164,35);
+            border: 1px solid  rgb(255,164,35);
+            color: rgb(255,255,255);
+            text-decoration: none;
+        }
+        .box-small:hover{
+            text-decoration: none;
+        }
+        .b-s-is10{
+            height: 40px;
+            padding: 0 9px 0 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            background-color: rgb(255,164,35);
+            border: 1px solid  rgb(255,164,35);
+            color: rgb(255,255,255);
+            text-decoration: none
+        }
+        .b-s-is10:hover{
+            text-decoration: none;
+        }
+        .b-s-n{
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            font-weight: normal;
+        }
+        .flex-gorisontal-up{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 400px;
+        }
+        .flex-gorisontal-middle{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+
+        }
+        .flex-gorisontal-down{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-top: 45px;
+
+        }
+        .flex-vertical-0{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+        }
+        .h-up{
+            font-size: 28px;
+            color: rgb(59,59,59);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .h-up-down{
+            font-size: 18px;
+        }
+        .h-m{
+            color: rgb(59,59,59);
+            font-size: 16px;
+            margin-right: 15px;
+
+            font-weight: bold;
+        }
+        .h-r-up{
+            color: rgb(59,59,59);
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .h-r-text{
+            color: rgb(59,59,59);
+            font-size: 12px;
+            margin: 30px 0 30px 0;
+        }
+        .h-r-grey{
+            color: rgb(59,59,59);
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 40px;
+        }
+        .h-r-white{
+            color: rgb(255,255,255);
+            font-size: 28px;
+            margin-top: 15px;
+            margin-left: 40px;
+        }
+        .i-slaider-right{
+           float: right;
+        }
+        .i-slaider-right-up{
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 45px;
+        }
+        .div-orange{
+            width: 300px;
+            height: 120px;
+            background-image: url("ft.png");
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+       .is{
+           display: none;
+           float: left;
+       }
+	   .metr {
+		   font-size:12px;
+	   }
+.container {
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    margin: -300px 0 0 -470px; }
+    
+.content h1 {
+	font-size: 40px; 
+	text-transform: uppercase; 
+	font-weight: bold; 
+	text-align: center;
+	margin-top: 180px;
+	color: #222;
+	line-height: 50px;  }
+.content h3 {
+	text-align: center; 
+	font-size: 22px; 
+	color: #222; }
+    
+/*	--------------------------------------------------
+	Global Reset & Standards
+	-------------------------------------------------- */
+	html, body { margin: 0; padding: 0; }
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, img, small, strike, strong, em, sub, sup, tt, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td, section { margin: 0; padding: 0; border: 0; font-weight: normal; font-style: normal; font-size: 100%; line-height: 1; font-family: inherit; text-align: left; }
+	table { border-collapse: collapse; border-spacing: 0; }
+	ol, ul { list-style: none; }
+
+	body { background: #fff; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; line-height: 18px; text-shadow: 0 0 1px rgba(0,0,0,0.01); color: #555; }
+	
+	h4 {
+		font-weight: bold; 
+		color: #222;
+		font-size: 24px; }
+		
+	a { 
+		color: #00baff;
+		text-decoration: none; 
+		font-weight: bold;
+		font-size: 12px; }
+		
+	a:hover { text-decoration: underline; }
