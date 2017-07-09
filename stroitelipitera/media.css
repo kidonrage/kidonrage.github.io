@@ -1,0 +1,217 @@
+@media only screen and (max-width : 1450px){
+	.materials .content::after{
+		width: 50%;
+		background-size: contain;
+		background-position: center bottom;
+	}
+}
+@media only screen and (max-width : 1200px){
+	.materials .content::after{
+		width: 38%;
+	}
+	#featured>img, div.orbit-wrapper, div.orbit-wrapper div#featured{
+		width: 600px !important;
+	}
+	div.c-wrap-0{
+		width: 100%;
+	}
+	section .content, header .content, footer .content, div.i-container{
+		width: 100%;
+	}
+}
+@media only screen and (max-width : 992px){
+	header .content .title{
+		font-size: 40px;
+	}
+	div.family{
+		margin: 30px 0;
+	}
+	.materials .content{
+		padding-bottom: 36px;
+	}
+	.materials .content::after{
+		height: auto;
+		bottom: 0;
+		top: 0;
+	}
+	.materials p:last-child{
+		margin-bottom: 0;
+	}
+	div.flex-gorisontal-middle{
+		display: block;
+		text-align: center;
+	}
+	div.flex-gorisontal-middle .h-m{
+		display: block;
+		margin-bottom: 10px;
+	}
+	div.flex-gorisontal-middle a{
+		display: inline-block;
+		position: relative;
+		padding: 0;
+	}
+	div.flex-gorisontal-middle a>span{
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		line-height: 36px;
+	}
+	div.flex-gorisontal-down{
+		display: block;
+		width: 100%;
+	}
+	div#featured>img{
+		width: 100% !important;
+	}
+	div[id^="is"]{
+		width: 100%;
+	}
+	div.orbit-wrapper>div.orbit-wrapper{
+		width: 100% !important;
+	}
+	div.orbit-wrapper{
+		margin: 0 auto;
+	}
+	div.i-slaider-right{
+		margin: 0 auto;
+		float: none;
+		width: 60%;
+		text-align: center;
+	}
+	div.i-slaider-right-up{
+		width: 100%;
+		margin: 0;
+		display: block;
+	}
+	.h-r-up{
+		text-align: center;
+	}
+	div.h-r-text br{
+		display: none;
+	}
+	div.div-orange{
+		margin: 0 auto;
+	}
+	div.slideron{
+		width: 100% !important;
+	}
+	.materials{
+		height: auto;
+	}
+	.contanet .tools .content .items{
+		display: block !important;
+	}
+	.tools .content .items .item{
+		width: 30%;
+	}
+	.main-page-call .content form input,.main-page-call .content form input[type=submit]{
+		display: block;
+		margin: 8px auto;
+		width: 50%;
+	}
+}
+@media only screen and (max-width : 768px){
+	header{
+		height: auto;
+		padding-bottom: 30px;
+	}
+	.top10 .content .family .item:first-child, .top10 .content .family .item:last-child{
+		display: block;
+		width: 100%;
+		background-position: center top;
+		padding-top: 130px;
+		margin: 30px 0;
+	}
+	.top10 .content .family .item:last-child{
+		padding-top: 160px;
+		padding-right: 0;
+	}
+	.top10 .content .family .item div[class^="text"],.top10 .content .family .item .count{
+		width: 100%;
+		display: block;
+		margin: 0;
+		text-align: center;
+	}
+	.top10 .content .family .item:last-child .text{
+		margin: 0;
+		text-align: center;
+	}
+	.top10 .content .family .item:last-child{
+		text-align: center;
+	}
+	.top10 .content .family .item:last-child .count{
+		margin: 20px 0;
+	}
+	.how-we-work .content .how-work-block, .how-we-work .content .one-day{
+		width: 100%;
+	}
+	.how-we-work .content .how-work-block .item .num{
+		left: 10px;
+	}
+	.how-we-work .content .how-work-block .item{
+		padding-left: 60px;
+	}
+	#featured>img, div.orbit-wrapper, div.orbit-wrapper div#featured{
+		width: 100% !important;
+	}
+	.materials .content{
+		padding: 0 15px;
+	}
+
+	.materials .content::after{
+		position: static;
+		height: 200px;
+		width: 100%;
+		margin-top: 20px;
+	}
+	.tools .content .items{
+		display: block;
+		text-align: center;
+	}
+	.tools .content .items .item{
+		display: block;
+		width: 80%;
+		background-position: center top;
+		margin: 0 auto 40px auto;
+	}
+	.main-page-call .content form input, .main-page-call .content form input[type=submit]{
+		width: 70%;
+	}
+}
+@media only screen and (max-width : 480px){
+	div.flex-gorisontal-up{
+		display: block;
+		width: 100%;
+	}
+	.h-up-down{
+		text-align: center;
+	}
+	div.flex-gorisontal-up > a{
+		display: block;
+		width: 80%;
+		margin: 0 auto;
+		height: 60px;
+		padding-top: 9px;
+		margin-bottom: 8px;
+	}
+	header .content .call-me{
+		height: auto;
+		padding: 8px 15px;
+		font-size: 19px;
+	}
+	.main-page-call .content form input, .main-page-call .content form input[type=submit]{
+		width: 95%;
+	}
+	.how-we-work .content .how-work-block .item .num{
+		left: 0;
+	}
+	.how-we-work .content .how-work-block .item{
+		padding-left: 40px;
+	}
+	div.div-orange{
+		width: 250px;
+	}
+}

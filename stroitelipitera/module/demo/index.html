@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="windows-1251" />
+		<title>Orbit слайдер | pcvector.net</title>	
+		<!-- Attach our CSS -->
+	  	<link rel="stylesheet" href="../orbit-1.2.3.css">
+	  	<link rel="stylesheet" href="demo-style.css">
+
+	  	<link rel="shortcut icon" href="/favicon.ico"> 
+		<!-- Attach necessary JS -->
+	    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.orbit-1.2.3.min.js"></script>
+		
+		<!-- Run the plugin -->
+		<script type="text/javascript">
+			$(window).load(function() {
+				$('#featured').orbit({
+				bullets:false,
+                    captions: false,
+                    timer: false,
+                });
+			});
+		</script>
+
+		
+	</head>
+	<body>
+	
+	<div class="container">
+		<h4>Orbit слайдер</h4>
+		<br/>
+		
+		<div id="featured"> 
+			<div class="content">
+				<h1>Контент внутри слайда.</h1>
+				<h3>Выдели меня... я текст.</h3>
+			</div>
+			<a href="#">
+			    <img src="dummy-images/overflow.jpg" />
+			</a>
+			<img src="dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="dummy-images/features.jpg" />
+		</div>
+
+		
+	</div>	
+		
+
+	</body>
+</html>
