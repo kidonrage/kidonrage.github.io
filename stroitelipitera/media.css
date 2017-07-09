@@ -212,6 +212,18 @@
 		padding-left: 40px;
 	}
 	div.div-orange{
-		width: 250px;
+		width: 100%;
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	div.div-orange > p{
+		font-size: 15px;
+		margin-left: 10px;
+	}
+	div.i-slaider-right{
+		margin: 10px 0 0 0;
+		width: 100%;
+		padding: 0 20px;
 	}
 }

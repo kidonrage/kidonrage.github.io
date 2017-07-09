@@ -49,6 +49,10 @@
 /* CONTAINER
    ================================================== */
 
+body{
+    min-width: 320px;
+}
+
 div.orbit-wrapper {
     width: 660px;
     height: 450px;
