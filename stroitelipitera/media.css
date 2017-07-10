@@ -320,6 +320,10 @@
 		width: 100%;
 	}
 	body a.button-call{
-    width: 70px;
-    height: 70px;
+		width: 70px;
+		height: 70px;
+	}
+	div.flex-gorisontal-down,div.c-wrap-0,div.c-wrap{
+		margin-top: 20px;
+	}
 }
