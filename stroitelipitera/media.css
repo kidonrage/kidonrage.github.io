@@ -11,6 +11,7 @@
 	}
 	#featured>img, div.orbit-wrapper, div.orbit-wrapper div#featured{
 		width: 600px !important;
+		height: auto;
 	}
 	div.c-wrap-0{
 		width: 100%;
@@ -63,8 +64,12 @@
 		display: block;
 		width: 100%;
 	}
-	div#featured>img{
+	div[id^="featured"]>img{
 		width: 100% !important;
+		height: auto !important;
+	}
+	div[id^="featured"]>img:first-child{
+		position: relative;
 	}
 	div[id^="is"]{
 		width: 100%;
@@ -72,8 +77,14 @@
 	div.orbit-wrapper>div.orbit-wrapper{
 		width: 100% !important;
 	}
+	div.slider-nav span{
+		height: auto;
+		top: 0;
+		bottom: 0;
+	}
 	div.orbit-wrapper{
 		margin: 0 auto;
+		height: auto !important;
 	}
 	div.i-slaider-right{
 		margin: 0 auto;
@@ -88,6 +99,7 @@
 	}
 	.h-r-up{
 		text-align: center;
+		margin-top: 20px;
 	}
 	div.h-r-text br{
 		display: none;
@@ -97,6 +109,7 @@
 	}
 	div.slideron{
 		width: 100% !important;
+		height: auto !important;
 	}
 	.materials{
 		height: auto;
@@ -182,6 +195,25 @@
 	}
 }
 @media only screen and (max-width : 480px){
+	header .content .logo{
+		width: 65%;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	header .content .title{
+		font-size: 30px;
+		line-height: 1.4;
+		margin-top: 30px;
+	}
+	header .content .pluses{
+		margin-top: 50px;
+	}
+	header .content .pluses .item{
+		font-size: 14px;
+	}
+	.top10 .content .images img:first-child{
+		margin: 5px auto;
+	}
 	div.flex-gorisontal-up{
 		display: block;
 		width: 100%;
@@ -201,6 +233,7 @@
 		height: auto;
 		padding: 8px 15px;
 		font-size: 19px;
+		width: 93%;
 	}
 	.main-page-call .content form input, .main-page-call .content form input[type=submit]{
 		width: 95%;
@@ -225,5 +258,39 @@
 		margin: 10px 0 0 0;
 		width: 100%;
 		padding: 0 20px;
+	}
+	section .content, header .content, footer .content{
+		padding: 0 10px;
+	}
+	.main-page-call .content .title,
+	.top10 .content .subtitle{
+		font-size: 28px;
+		line-height: 1.2;
+	}
+	.top10 .content .title{
+		font-size: 24px;
+	}
+	.main-page-call .content .subtitle{
+		font-size: 17px;
+		width: 100%;
+	}
+	footer .content{
+		display: block;
+	}
+	footer .content > div{
+		display: block;
+		width: 100%;
+		float: none;
+		max-width: 100%;
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	footer .content .right{
+		width: 100%;
+	}
+	footer .content .right .phone-time{
+		text-align: center;
+		float: none;
+		width: 100%;
 	}
 }
