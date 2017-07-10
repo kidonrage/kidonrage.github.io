@@ -219,6 +219,7 @@
 	}
 	#popup-call-feedback .button{
 		font-size: 11px;
+		padding: 0;
 	}
 	header .content .logo{
 		width: 65%;
