@@ -1,20 +1,30 @@
 /* These are just the demo styles and these can be removed and Orbit 
 will still work like a champ (except any content block needs a background which
 our demo gets from this sheet) */
+.logo{
+    position: relative;
+}
+.logo a{
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
 a.button-call{
     position: fixed;
     width: 90px;
     height: 90px;
     background: #FFA423;
-    bottom: 20px;
-    right: 20px;
+    bottom: 40px;
+    right: 25px;
     border-radius: 50%;
     background-image: url(../images/icons/phone.png);
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
     animation: rotate 3s infinite;
-    z-index: 1000;
+    z-index: 10000;
 }
 @keyframes rotate {
   0% {
