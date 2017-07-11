@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="orbit-1.2.3.css">
+    <link rel="stylesheet" href="demo/demo-style.css">
+
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.orbit-1.2.3.js"></script>
+    <script src="js/scripts.js"></script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('#featured').orbit({
+                bullets:false,
+                captions: false,
+                timer: false,
+            });
+        });
+    </script>
+    <style>
+        body{
+            margin: 0;
+            top: 0;
+            left: 0;
+        }
+        * {margin: 0; padding: 0;}
+        a{
+            text-decoration: none;
+        }
+        .i-container{
+            width: 1005px;
+            margin: 0 auto !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .h-wrap{
+            margin-bottom: 45px;
+        }
+        .c-wrap{
+            margin-top: 45px;
+            display: none;
+            width: 1005px;
+            float: left;
+        }
+        .c-wrap-0{
+            margin-top: 45px;
+            width: 1005px;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .box-big{
+            width: 125px;
+            height: 75px;
+            border: 1.5px solid rgb(255,164,35);
+            margin: 0 5px 0 5px;
+            color: rgb(59,59,59);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+
+        }
+        .box-big:visited{
+            background-color: rgb(255,226,186);
+        }
+        .box-big:focus{
+            background-color: rgb(255,226,186);
+        }
+        .box-big:active{
+            background-color: rgb(255,226,186);
+        }
+        .box-big:hover{
+            text-decoration: none;
+        }
+        .b-b-ib0{
+            width: 125px;
+            height: 75px;
+            border: 1.5px solid rgb(255,164,35);
+            margin: 0 5px 0 5px;
+            color: rgb(59,59,59);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background-color: rgb(255,226,186);
+        }
+        .b-b-ib0:hover{
+            text-decoration: none;
+        }
+        .b-b-c{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .box-small{
+            width: 60px;
+            height: 40px;
+            border-top: 2px solid  rgb(220,220,220);
+            border-bottom: 2px solid  rgb(220,220,220);
+            border-right: 1px solid  rgb(220,220,220);
+            border-left: 1px solid  rgb(220,220,220);
+            padding: 0 9px 0 9px;
+            color: rgb(213,222,224);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .box-small:focus{
+            background-color: rgb(255,164,35);
+            border: 1px solid  rgb(255,164,35);
+            color: rgb(255,255,255);
+            text-decoration: none;
+        }
+        .box-small.loaded{
+            background-color: rgb(255,164,35);
+            border: 1px solid  rgb(255,164,35);
+            color: rgb(255,255,255);
+            text-decoration: none;
+        }
+        .box-small:hover{
+            text-decoration: none;
+        }
+        .b-s-is10{
+            width: 60px;
+            height: 40px;
+
+            padding: 0 9px 0 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            background-color: rgb(255,164,35);
+            border: 1px solid  rgb(255,164,35);
+            color: rgb(255,255,255);
+            text-decoration: none
+        }
+        .b-s-is10:hover{
+            text-decoration: none;
+        }
+        .b-s-n{
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            font-weight: normal;
+        }
+        .flex-gorisontal-up{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 400px;
+        }
+        .flex-gorisontal-middle{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+
+        }
+        .flex-gorisontal-down{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-top: 45px;
+
+        }
+        .flex-vertical-0{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+        }
+        .h-up{
+            font-size: 28px;
+            color: rgb(59,59,59);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .h-up-down{
+            font-size: 18px;
+        }
+        .h-m{
+            color: rgb(59,59,59);
+            font-size: 16px;
+            margin-right: 15px;
+
+            font-weight: bold;
+        }
+        .h-r-up{
+            color: rgb(59,59,59);
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .h-r-text{
+            color: rgb(59,59,59);
+            font-size: 12px;
+            margin: 30px 0 30px 0;
+        }
+        .h-r-grey{
+            color: rgb(59,59,59);
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 40px;
+        }
+        .h-r-white{
+            color: rgb(255,255,255);
+            font-size: 28px;
+            margin-top: 15px;
+            margin-left: 40px;
+        }
+        .i-slaider-right{
+           float: right;
+        }
+        .i-slaider-right-up{
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 45px;
+        }
+        .div-orange{
+            width: 300px;
+            height: 120px;
+            background-image: url("ft.png");
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .div-orange:after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            border-width: 60px 20px 60px 0;
+            border-style: solid;
+            border-color: transparent #fff transparent transparent;
+        }
+       .is{
+           display: none;
+           float: left;
+       }
+    </style>
+</head>
+<body onload="setID()">
+
+    <div class="i-container">
+        <div class="h-wrap">
+            <p style="font-size: 40px" class="h-up">Примеры работ</p>
+            <p class="h-up-down">Делаем качественный ремонт за разумные деньги</p>
+        </div >
+
+            <div class="flex-gorisontal-up">
+                <a id="ibb0" onclick="showib1()" href="javascript:void(0);"  class="box-big"><div class="b-b-c"><span style="font-size: 22px">1</span><span>комната</span></div></a>
+                <a onclick="showib2()" href="javascript:void(0);" class="box-big"><div class="b-b-c"><span style="font-size: 22px">2-x</span><span>комнатная</span></div></a>
+                <a onclick="showib3()" href="javascript:void(0);" class="box-big"><div class="b-b-c"><span style="font-size: 22px">3-x</span><span>комнатная</span></div></a>
+            </div>
+
+        <div id="ib0" class="c-wrap-0">
+            <div class="flex-gorisontal-middle">
+                <span class="h-m">Выберите метраж</span>
+                <a id="iss10" onclick="showis11()" href="javascript:void(0);" class="box-small"><span class="b-s-n">27 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis12()" href="javascript:void(0);" class="box-small"><span class="b-s-n">31 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis13()" href="javascript:void(0);" class="box-small"><span class="b-s-n">32 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis14()" href="javascript:void(0);" class="box-small"><span class="b-s-n">34 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis15()" href="javascript:void(0);" class="box-small"><span class="b-s-n">36 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis16()" href="javascript:void(0);" class="box-small"><span class="b-s-n">39 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis17()" href="javascript:void(0);" class="box-small"><span class="b-s-n">43 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis18()" href="javascript:void(0);" class="box-small"><span class="b-s-n">48 <sup>m<sup>2</sup></sup></span></a>
+            </div>
+
+            <div id="is10" ><div  class="flex-gorisontal-down">
+                <div id="featured">
+                    <img style="width: 705px;height: 450px;" src="demo/dummy-images/captions.jpg" alt="Заголовок" />
+                    <img style="width: 705px;height: 450px;" src="demo/dummy-images/features.jpg" alt="Возможности" />
+                </div>
+                <div class="i-slaider-right">
+                    <div class="i-slaider-right-up">
+                        <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                        <div class="h-r-text">
+                            Ремонт студии. Стены и потолок<br>
+                            выровнены и покрашены, на пол<br>
+                            уложен ла11минат, сделана барная<br>
+                            стойка, санузел полностью выложен<br>
+                            плиткой, установлены сантехприборы.
+                        </div>
+                    </div>
+                    <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="ib1" class="c-wrap">
+            <div class="flex-gorisontal-middle">
+                <span class="h-m">Выберите метраж</span>
+                <a onclick="showis11()" href="javascript:void(0);" class="box-small"><span class="b-s-n">27 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis12()" href="javascript:void(0);" class="box-small"><span class="b-s-n">31 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis13()" href="javascript:void(0);" class="box-small"><span class="b-s-n">32 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis14()" href="javascript:void(0);" class="box-small"><span class="b-s-n">34 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis15()" href="javascript:void(0);" class="box-small"><span class="b-s-n">36 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis16()" href="javascript:void(0);" class="box-small"><span class="b-s-n">39 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis17()" href="javascript:void(0);" class="box-small"><span class="b-s-n">43 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis18()" href="javascript:void(0);" class="box-small"><span class="b-s-n">48 <sup>m<sup>2</sup></sup></span></a>
+            </div>
+            <div id="is11" ><div  class="flex-gorisontal-down">
+                <div id="featured">
+                    <img style="width: 705px;height: 450px;" src="demo/dummy-images/captions.jpg" alt="Заголовок" />
+                    <img style="width: 705px;height: 450px;" src="demo/dummy-images/features.jpg" alt="Возможности" />
+                </div>
+                <div class="i-slaider-right">
+                    <div class="i-slaider-right-up">
+                        <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                        <div class="h-r-text">
+                            Ремонт студии. Стены и потолок<br>
+                            выровнены и покрашены, на пол<br>
+                            уложен ла11минат, сделана барная<br>
+                            стойка, санузел полностью выложен<br>
+                            плиткой, установлены сантехприборы.
+                        </div>
+                    </div>
+                    <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div id="ib2" class="c-wrap">
+            <div class="flex-gorisontal-middle">
+                <span class="h-m">Выберите метраж</span>
+                <a onclick="showis21()" href="javascript:void(0);" class="box-small"><span class="b-s-n">47 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis22()" href="javascript:void(0);" class="box-small"><span class="b-s-n">51 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis23()" href="javascript:void(0);" class="box-small"><span class="b-s-n">57 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis24()" href="javascript:void(0);" class="box-small"><span class="b-s-n">58 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis25()" href="javascript:void(0);" class="box-small"><span class="b-s-n">62 <sup>m<sup>2</sup></sup></span></a>
+            </div>
+            <div id="is21" class="is-0"><div  class="flex-gorisontal-down">
+                <div id="featured">
+                    <div class="content">
+                        <h1>Контент внутри слайда.</h1>
+                        <h3>Выдели меня... я текст.</h3>
+                    </div>
+                    <a href="#">
+                        <img src="demo/dummy-images/overflow.jpg" />
+                    </a>
+                    <img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+                    <img src="demo/dummy-images/features.jpg" />
+                </div>
+                <div class="i-slaider-right">
+                    <div class="i-slaider-right-up">
+                        <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                        <div class="h-r-text">
+                            Ремонт студии. Стены и потолок<br>
+                            выровнены и покрашены, на пол<br>
+                            уложен ламинат, сделана барная<br>
+                            стойка, санузел полностью выложен<br>
+                            плиткой, установлены сантехприборы.
+                        </div>
+                    </div>
+                    <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+                </div>
+            </div></div>
+        </div>
+
+        <div id="ib3" class="c-wrap">
+            <div class="flex-gorisontal-middle">
+                <span class="h-m">Выберите метраж</span>
+                <a onclick="showis31()" href="javascript:void(0);" class="box-small"><span class="b-s-n">62 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis32()" href="javascript:void(0);" class="box-small"><span class="b-s-n">67 <sup>m<sup>2</sup></sup></span></a>
+                <a onclick="showis33()" href="javascript:void(0);" class="box-small"><span class="b-s-n">72 <sup>m<sup>2</sup></sup></span></a>
+            </div>
+            <div id="is31" class="is-0"><div  class="flex-gorisontal-down">
+                <div id="featured">
+                    <div class="content">
+                        <h1>Контент внутри слайда.</h1>
+                        <h3>Выдели меня... я текст.</h3>
+                    </div>
+                    <a href="#">
+                        <img src="demo/dummy-images/overflow.jpg" />
+                    </a>
+                    <img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+                    <img src="demo/dummy-images/features.jpg" />
+                </div>
+                <div class="i-slaider-right">
+                    <div class="i-slaider-right-up">
+                        <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                        <div class="h-r-text">
+                            Ремонт студии. Стены и потолок<br>
+                            выровнены и покрашены, на пол<br>
+                            уложен ламинат, сделана барная<br>
+                            стойка, санузел полностью выложен<br>
+                            плиткой, установлены сантехприборы.
+                        </div>
+                    </div>
+                    <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+                </div>
+            </div></div>
+        </div>
+
+
+
+        <div id="is12" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ла11минат, сделана барная<br>
+                        стойка, санузел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is13" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламинат, сделана барная<br>
+                        стойка, сануз22ел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is14" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен 33, сделана барная<br>
+                        стойка, санузел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is15" class="is"><div  class="flex-gorisontal-down">
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен лами44нат, сделана барная<br>
+                        стойка, санузел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is16" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламинат, сделана барная<br>
+                        стойка, сан55узел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is17" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен лам66инат, сделана барная<br>
+                        стойка, санузел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is18" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламин77ат, сделана барная<br>
+                        стойка, санузел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+
+        <div id="is22" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламинат, 22сделана барная<br>
+                        стойка, санузел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is23" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламинат, с23делана барная<br>
+                        стойка, санузел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is24" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламинат, сд24елана барная<br>
+                        стойка, санузел полностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is25" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламинат, сделана барная<br>
+                        стойка, санузел полн25остью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+
+
+        <div id="is32" class="is"><div  class="flex-gorisontal-down">
+
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламинат, сделана барная<br>
+                        стойка, санузел по32лностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+        <div id="is33" class="is"><div  class="flex-gorisontal-down">
+                <div id="featured">
+			        <div class="content">
+				        <h1>Контент внутри слайда.</h1>
+				        <h3>Выдели меня... я текст.</h3>
+			        </div>
+			    <a href="#">
+			        <img src="demo/dummy-images/overflow.jpg" />
+			    </a>
+			<img src="demo/dummy-images/captions.jpg" data-caption="#htmlCaption" />
+			<img src="demo/dummy-images/features.jpg" />
+		        </div>
+            <div class="i-slaider-right">
+                <div class="i-slaider-right-up">
+                    <p class="h-r-up">1-комнатная квартира,<br> 27 м² в стиле Модерн</p>
+                    <div class="h-r-text">
+                        Ремонт студии. Стены и потолок<br>
+                        выровнены и покрашены, на пол<br>
+                        уложен ламинат, сделана барная<br>
+                        стойка, санузел пол33ностью выложен<br>
+                        плиткой, установлены сантехприборы.
+                    </div>
+                </div>
+                <div class="div-orange">
+                        <p class="h-r-grey">Стоимость ремонта</p>
+                        <p class="h-r-grey">под ключ</p>
+                        <p class="h-r-white">166 000 руб.</p>
+                    </div>
+            </div>
+        </div></div>
+    </div>
+</div>
+</body>
+</html>
