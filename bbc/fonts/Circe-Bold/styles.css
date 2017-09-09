@@ -1,0 +1,8 @@
+
+@font-face {
+  font-family: 'Circe-Bold';
+  src: url('Circe-Bold.eot?#iefix') format('embedded-opentype'),  url('Circe-Bold.otf')  format('opentype'),
+	     url('Circe-Bold.woff') format('woff'), url('Circe-Bold.ttf')  format('truetype'), url('Circe-Bold.svg#Circe-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
