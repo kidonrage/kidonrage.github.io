@@ -36,7 +36,7 @@ $(function() {
 			992: {
 				items: 3
 			}
-		}	
+		}
 	});
 
 	$('.accordion-item-title').click(function() {
