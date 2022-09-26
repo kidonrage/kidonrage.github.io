@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ДОМ</title>
+        <!-- CSS only -->
+        <link rel="stylesheet" href="./style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <main>
+                <div class="row align-items-center align-content-center">
+                <div class="col-md-12 col-lg-6">
+                    <h4 class="mb-3">Вопросы</h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="row g-3">
+
+                            <div class="col-sm-12">
+                                <label for="safety" class="form-label">Безопасность</label>
+                                <input type="number" class="form-control" id="safety" placeholder="" value="0" min="0" max="10" required>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="love" class="form-label">Любовь</label>
+                                <input type="number" class="form-control" id="love" placeholder="" value="0" min="0" max="10" required>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="selfactual" class="form-label">Самоактуализация</label>
+                                <input type="number" class="form-control" id="selfactual" placeholder="0" value="" min="0" max="10" required>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="respect" class="form-label">Уважение</label>
+                                <input type="number" class="form-control" id="respect" placeholder="0" value="" min="0" max="10" required>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="physical" class="form-label">Физиологические</label>
+                                <input type="number" class="form-control" id="physical" placeholder="0" value="" min="0" max="10" required>
+                            </div>
+
+                            <button class="w-100 btn btn-primary btn-lg" onclick="drawHouse()" type='button'>Построить дом</button>
+
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="col-md-12 col-lg-6">
+                    <canvas id="house"></canvas>
+                </div>
+            </div>
+            </main>
+        </div>
+
+        <script src="./index.js"></script>
+    </body>
+</html>
