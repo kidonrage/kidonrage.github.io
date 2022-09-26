@@ -1,6 +1,6 @@
-const WIDTH = 500
-const HEIGHT = 500
-const HOME_SIZE = 400
+const WIDTH = document.getElementById('house-container').offsetWidth
+const HEIGHT = WIDTH
+const HOME_SIZE = WIDTH - 100
 const POINTS_IN_SECTION = HOME_SIZE / 2 / 10
 
 const perfect_house_data = {
@@ -115,9 +115,9 @@ function house(canvas, data, lineWidth, color) {
 }
 
 let canvas = document.getElementById('house')
+init(canvas)
 
 function drawHouse() {
-    init(canvas)
     carcas(canvas)
     house(canvas, perfect_house_data, 1.0, 'black')
     const house_data = {
