@@ -49,11 +49,43 @@ table {
 
 
 
-main {
-    padding: 16px;
+#full-height-container {
+    padding: 16px 16px 64px 16px;
+	height: 100vh;
+	position: relative;
 }
 
 #house {
     display: block;
     margin: 0 auto;
+}
+
+#question-container {
+	visibility: hidden;
+	transition: all 0.25s ease-in-out;
+	margin-bottom: 16px;
+}
+
+
+#question-description {
+	margin-top: 16px;
+	margin-bottom: 16px;
+}
+
+#question-answer {
+	margin-bottom: 16px;
+}
+
+#house-container {
+	visibility: hidden;
+	transition: all 0.25s ease-in-out;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+#download {
+	margin-bottom: 16px;
 }
