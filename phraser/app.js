@@ -4,18 +4,19 @@ const encryptedUrl = "U2FsdGVkX19yxCbwKKqFG22kK6CE8U+YHxx6hY8ly/OJCDr9TT4sW3N44s
 const apiUrl = CryptoJS.AES.decrypt(encryptedUrl, "dontstealthiskey").toString(CryptoJS.enc.Utf8);
 const apiKey = CryptoJS.AES.decrypt(encryptedApiKey, "dontstealthiskey").toString(CryptoJS.enc.Utf8);
 
-async function mockParaphrase(text) {
+async function mockParaphrase(text, temperature, instruction) {
+    console.log(text, temperature, instruction);
     await delay(2000);
 
     return "d"
 }
 
-async function paraphrase(text) {
+async function paraphrase(text, temperature, instruction) {
     const body = {
         "model": "text-davinci-edit-001",
         "input": text,
-        "temperature": 0.75,
-        "instruction": "Rephrase the question, change main variables",
+        "temperature": temperature,
+        "instruction": instruction,
     }
     const params = {
         headers: {
@@ -33,8 +34,11 @@ async function paraphrase(text) {
 }
 
 let inputTextarea = document.getElementById('input-textarea')
+let instructionInput = document.getElementById('instruction-input')
+let temperatureInput = document.getElementById('temperature-input')
+let temperatureValueLabel = document.getElementById('temperature-value')
 let submitButton = document.getElementById('submit-button')
-let inputForm = document.getElementById('inputForm')
+let inputForm = document.getElementById('input-form')
 let resultContainer = document.getElementById('result-container')
 let resultField = document.getElementById('result')
 let resultDiffField = document.getElementById('result-diff')
@@ -48,13 +52,27 @@ inputTextarea.addEventListener("input", function (evt) {
     submitButton.disabled = isEmpty(evt.target.value)
 })
 
+temperatureInput.addEventListener("input", function (evt) {
+    updateTemperature(evt.target.value)
+})
+
+inputTextarea.addEventListener("input", function (evt) {
+    submitButton.disabled = isEmpty(evt.target.value)
+})
+
 inputForm.addEventListener("submit", async function (evt) {
     evt.preventDefault();
     let input = evt.target.elements["input-textarea"].value
+    let instruction = evt.target.elements["instruction-input"].value
+    let temperature = parseFloat(evt.target.elements["temperature-input"].value)
+
+    if (isEmpty(instruction)) {
+        instruction = "Rephrase the question, change main variables"
+    }
+
     if (isEmpty(input)) { return }
     spinner.hidden = false
-    // let result = await mockParaphrase(input)
-    let result = await paraphrase(input)
+    let result = await paraphrase(input, temperature, instruction)
     spinner.hidden = true
     if (isEmpty(result)) {
         resultContainer.hidden = true
@@ -69,6 +87,14 @@ inputForm.addEventListener("submit", async function (evt) {
         resultDiffField.innerHTML = ds
     }
 }, true);
+
+updateTemperature(0.75)
+
+function updateTemperature(updatedTemperature) {
+    temperature = updatedTemperature
+    temperatureInput.value = `${updatedTemperature}`
+    temperatureValueLabel.innerText = `${updatedTemperature}`
+}
 
 function fallbackCopyTextToClipboard(text) {
     var textArea = document.createElement("textarea");
