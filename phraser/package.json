@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build-for-gp": "react-scripts build && mv build/static ./",
+    "build-for-gp": "react-scripts build && cp -r build/* ./",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
