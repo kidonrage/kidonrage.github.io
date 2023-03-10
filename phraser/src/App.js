@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import LoadingButton from '@mui/lab/LoadingButton';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 import CachedIcon from '@mui/icons-material/Cached';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
@@ -33,15 +35,22 @@ const theme = createTheme({
   },
 });
 
+class QuestionModel {
+
+  constructor(original, rephrased, isParaphrasing, isFixed) {
+    this.original = original
+    this.rephrased = rephrased
+    this.isParaphrasing = isParaphrasing
+    this.isFixed = isFixed
+  }
+}
+
 
 function App() {
 
   const [rephrasingQuestionsIndicies, setRephrasingQuestionsIndicies] = React.useState([])
   const [questions, setQuestions] = React.useState([
-    {
-      original: 'How old are you?',
-      rephrased: null
-    },
+    new QuestionModel('How old are you?', '', false, false)
   ]);
 
   React.useEffect(() => {
@@ -54,12 +63,17 @@ function App() {
     setQuestions(updatedQuestions)
   }
 
+  const handleToggleFixQuestion = (questionIndex) => {
+    var updatedQuestions = [...questions]
+    updatedQuestions[questionIndex].isFixed = !updatedQuestions[questionIndex].isFixed
+    setQuestions(updatedQuestions)
+  }
+
   const addQuestion = () => {
-    setQuestions([...questions, {
-      original: '',
-      rephrased: null,
-      isParaphrasing: false
-    }])
+    setQuestions([
+      ...questions,
+      new QuestionModel('', '', false, false)
+    ])
   }
 
   const paraphraseQuestion = (questionIndex) => {
@@ -145,78 +159,81 @@ function App() {
 
               {questions.map((question, index) => {
                 return (
-                  <React.Fragment key={index}>
-                    <Grid item xs={6}>
-                      <Paper
-                        elevation={3}
-                        sx={{
-                          p: 2,
-                          borderRadius: 2,
-                        }}
-                      >
-                        <Grid container rowSpacing={1} columnSpacing={{ xs: 1 }}>
-                          <Grid item xs={12} alignItems="stretch">
-                            <TextField
-                              label="Original Question"
-                              multiline
-                              rows={4}
-                              value={question.original}
-                              fullWidth
-                              onChange={event => { handleOriginalQuestionInput(index, event) }}
-                            />
-                          </Grid>
-                          <Grid item xs={12}>
-                            <LoadingButton
-                              variant="outlined"
-                              loading={rephrasingQuestionsIndicies.includes(index)}
-                              disabled={!question.original}
-                              loadingPosition="start"
-                              startIcon={<CachedIcon />}
-                              onClick={() => paraphraseQuestion(index)}
-                            >
-                              Paraphrase
-                            </LoadingButton>
-                          </Grid>
+                  <Grid key={index} item xs={12}>
+                    <Paper
+                      elevation={3}
+                      sx={{
+                        p: 2,
+                        borderRadius: 2,
+                      }}
+                    >
+                      <Grid container rowSpacing={1} columnSpacing={{ xs: 3 }}>
+                        <Grid item xs={12} md={6} alignItems="stretch">
+                          <TextField
+                            label="Original Question"
+                            multiline
+                            rows={4}
+                            value={question.original}
+                            fullWidth
+                            onChange={event => { handleOriginalQuestionInput(index, event) }}
+                          />
                         </Grid>
-                      </Paper>
-                    </Grid>
-                    {question.rephrased ? (
-                      <Grid item xs={6}>
-                        <Paper
-                          elevation={3}
-                          sx={{
-                            p: 2,
-                            borderRadius: 2,
-                          }}
-                        >
-                          <Grid container rowSpacing={1} columnSpacing={{ xs: 1 }}>
-                            <Grid item xs={12} alignItems="stretch">
-                              <TextField
-                                label="Rephrased question"
-                                multiline
-                                rows={4}
-                                value={question.rephrased}
-                                fullWidth
-                                InputProps={{
-                                  readOnly: true,
-                                }}
-                              />
-                            </Grid>
-                            <Grid item xs={12}>
-                              <Button
-                                variant="contained"
-                                startIcon={<ContentCopyIcon />}
-                                disableElevation
-                                onClick={() => {
-                                  copy(question.rephrased)
-                                }}
-                              >Copy text</Button>
-                            </Grid>
-                          </Grid>
-                        </Paper>
+                        <Grid item xs={12} md={6}>
+                          <TextField
+                            label="Rephrased question"
+                            multiline
+                            rows={4}
+                            value={question.rephrased}
+                            fullWidth
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                          />
+                        </Grid>
+                        <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                          <LoadingButton
+                            variant="outlined"
+                            loading={rephrasingQuestionsIndicies.includes(index)}
+                            disabled={!question.original || question.isFixed}
+                            loadingPosition="start"
+                            startIcon={<CachedIcon />}
+                            onClick={() => paraphraseQuestion(index)}
+                          >
+                            Paraphrase
+                          </LoadingButton>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <Button
+                            variant="contained"
+                            startIcon={<ContentCopyIcon />}
+                            disableElevation
+                            disabled={!question.rephrased}
+                            onClick={() => {
+                              copy(question.rephrased)
+                            }}
+                            sx={{
+                              mr: 2
+                            }}
+                          >
+                            Copy text
+                          </Button>
+                          {question.rephrased && (
+                            <FormControlLabel
+                              control={
+                                <Switch
+                                  value={question.isFixed}
+                                  checked={question.isFixed}
+                                  onChange={() => { handleToggleFixQuestion(index) }}
+                                  inputProps={{ 'aria-label': 'controlled' }}
+                                />
+                              }
+                              label="Fix variant"
+                            />
+                          )}
+                        </Grid>
                       </Grid>
-                    ) : <Grid item xs={6}></Grid>}
-                  </React.Fragment>
+                    </Paper>
+                  </Grid>
                 )
               })
               }
