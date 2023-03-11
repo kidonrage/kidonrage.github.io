@@ -129,10 +129,24 @@ function App() {
               sx={{ pb: 4 }}
             >
               <Grid item xs="auto">
-                <Button startIcon={<AddIcon />} variant="contained" disableElevation onClick={addQuestion}>Add Question</Button>
+                <Button 
+                startIcon={<AddIcon />} 
+                variant="outlined" 
+                disableElevation 
+                onClick={addQuestion}
+                >
+                  Add Question
+                  </Button>
               </Grid>
               <Grid item xs="auto">
-                <Button sx={{ mr: 1 }} startIcon={<ContentCopyIcon />} variant="contained" disableElevation onClick={copyAllTexts}>Copy all texts</Button>
+                <Button
+                  sx={{ mr: 1 }}
+                  startIcon={<ContentCopyIcon />}
+                  variant="outlined"
+                  onClick={copyAllTexts}
+                >
+                  Copy all texts
+                </Button>
                 {/* <Button startIcon={<SaveIcon />} variant="outlined">Save</Button> */}
               </Grid>
             </Grid>
@@ -192,7 +206,7 @@ function App() {
                         </Grid>
                         <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'flex-end' }}>
                           <LoadingButton
-                            variant="outlined"
+                            variant="contained"
                             loading={rephrasingQuestionsIndicies.includes(index)}
                             disabled={!question.original || question.isFixed}
                             loadingPosition="start"
@@ -204,7 +218,7 @@ function App() {
                         </Grid>
                         <Grid item xs={12} md={6}>
                           <Button
-                            variant="contained"
+                            variant="outlined"
                             startIcon={<ContentCopyIcon />}
                             disableElevation
                             disabled={!question.rephrased}
