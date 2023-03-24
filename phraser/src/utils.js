@@ -22,8 +22,14 @@ export async function paraphrase(text, temperature, instruction) {
         method: 'POST'
     }
 
-    let responseData = await fetch(apiUrl, params)
-    let response = await responseData.json()
+    let response = await fetch(apiUrl, params)
 
-    return response.choices[0].text
+    if (!response.ok) {
+        let error = await response.json()
+        throw error.error
+    }
+
+    let responseObject = await response.json()
+
+    return responseObject.choices[0].text
 }
