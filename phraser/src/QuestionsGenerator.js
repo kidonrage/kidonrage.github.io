@@ -2,16 +2,25 @@ import React from "react";
 import copy from 'clipboard-copy'
 import { Grid, Box, Container, Button, Typography, Input, Paper, TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { Save as SaveIcon } from "@mui/icons-material";
+import { LoadingButton } from '@mui/lab';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import { generateQuestions } from "./utils";
 
-export const QuestionsGenerator = (props) => {
+export const QuestionsGenerator = ({ setError }) => {
 
     const [contextString, setContextString] = React.useState('');
     const [generatedQuestionsString, setGeneratedQuestionsString] = React.useState('');
-    const [questionsCount, setGeneratedQuestionsCount] = React.useState(10);
 
+    const [isGenerating, setIsGenerating] = React.useState(false);
+    const [isGeneratingAvailable, setIsGeneratingAvailable] = React.useState(false);
+
+    const [questionsCount, setGeneratedQuestionsCount] = React.useState(10);
     const [questionType, setQuestionType] = React.useState('');
+
+    React.useEffect(() => {
+        console.log(!!contextString, !!questionType, !!contextString && !!questionType)
+        setIsGeneratingAvailable(!!contextString && !!questionType)
+    }, [contextString, questionType])
 
     const copyAllTexts = () => {
         const stringToCopy = generatedQuestionsString
@@ -33,15 +42,16 @@ export const QuestionsGenerator = (props) => {
 
     const handleGenerateQuestions = () => {
         console.log(contextString)
+        setIsGenerating(true)
         generateQuestions(contextString, questionsCount, questionType)
             .then((result) => {
                 setGeneratedQuestionsString(result)
             })
             .catch((error) => {
-                // setError(error.message)
+                setError(error.message)
             })
             .finally(() => {
-                // setIs
+                setIsGenerating(false)
             })
     }
 
@@ -120,13 +130,16 @@ export const QuestionsGenerator = (props) => {
                                         </Select>
                                     </FormControl>
 
-                                    <Button
+                                    <LoadingButton
                                         sx={{ mr: 1 }}
+                                        loading={isGenerating}
+                                        disabled={!isGeneratingAvailable}
+                                        loadingPosition="center"
                                         onClick={handleGenerateQuestions}
                                         variant="contained"
                                     >
                                         Generate questions
-                                    </Button>
+                                    </LoadingButton>
                                 </Grid>
                                 <Grid item xs={12} md={6} alignItems="stretch">
                                     <Button

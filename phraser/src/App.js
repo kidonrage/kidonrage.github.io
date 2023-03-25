@@ -12,7 +12,7 @@ import { Snackbar, Alert } from '@mui/material';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { Phraser } from './Phraser';
 import { QuestionsGenerator } from './QuestionsGenerator';
 
@@ -74,6 +74,7 @@ function App() {
       <Routes>
         <Route path='/phraser' element={<Phraser setError={setError} />} />
         <Route path='/questions-generator' element={<QuestionsGenerator />} />
+        <Route path='*' element={<Navigate to="/phraser" />} />
       </Routes>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
