@@ -3,12 +3,13 @@ import copy from 'clipboard-copy'
 import { Grid, Box, Container, Button, Typography, Input, Paper, TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { Save as SaveIcon } from "@mui/icons-material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import { generateQuestions } from "./utils";
 
 export const QuestionsGenerator = (props) => {
 
     const [contextString, setContextString] = React.useState('');
     const [generatedQuestionsString, setGeneratedQuestionsString] = React.useState('');
-    const [generatedQuestionsCount, setGeneratedQuestionsCount] = React.useState(10);
+    const [questionsCount, setGeneratedQuestionsCount] = React.useState(10);
 
     const [questionType, setQuestionType] = React.useState('');
 
@@ -22,7 +23,7 @@ export const QuestionsGenerator = (props) => {
         setQuestionType(e.target.value)
     }
 
-    const handleChangeGeneratedQuestionsCount = (e) => {
+    const handleChangeQuestionsCount = (e) => {
         setGeneratedQuestionsCount(e.target.value)
     }
 
@@ -30,8 +31,18 @@ export const QuestionsGenerator = (props) => {
         setContextString(event.target.value)
     }
 
-    const generateQuestions = () => {
+    const handleGenerateQuestions = () => {
         console.log(contextString)
+        generateQuestions(contextString, questionsCount, questionType)
+            .then((result) => {
+                setGeneratedQuestionsString(result)
+            })
+            .catch((error) => {
+                // setError(error.message)
+            })
+            .finally(() => {
+                // setIs
+            })
     }
 
     const arrayRange = (start, stop, step) =>
@@ -51,25 +62,6 @@ export const QuestionsGenerator = (props) => {
             }}
         >
             <Container>
-                {/* <Grid
-                    container
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    sx={{ pb: 4 }}
-                >
-                    <Grid item xs="auto">
-                        <Button
-                            sx={{ mr: 1 }}
-                            startIcon={<SaveIcon />}
-                            variant="outlined"
-                            onClick={copyAllTexts}
-                        >
-                            Save
-                        </Button>
-                    </Grid>
-                </Grid> */}
-
                 <Grid container rowSpacing={3} columnSpacing={2}>
                     <Grid item xs={6}>
                         <Typography
@@ -118,19 +110,19 @@ export const QuestionsGenerator = (props) => {
                                         <Select
                                             labelId="questions-count-select-label"
                                             id="questions-count-select"
-                                            value={generatedQuestionsCount}
+                                            value={questionsCount}
                                             label="Questions"
-                                            onChange={handleChangeGeneratedQuestionsCount}
+                                            onChange={handleChangeQuestionsCount}
                                         >
                                             {questionsCountOptions.map(option => (
-                                                <MenuItem value={option}>{option}</MenuItem>
+                                                <MenuItem key={option} value={option}>{option}</MenuItem>
                                             ))}
                                         </Select>
                                     </FormControl>
 
                                     <Button
                                         sx={{ mr: 1 }}
-                                        onClick={generateQuestions}
+                                        onClick={handleGenerateQuestions}
                                         variant="contained"
                                     >
                                         Generate questions

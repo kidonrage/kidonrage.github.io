@@ -51,15 +51,17 @@ export const Phraser = ({ setError }) => {
         setRephrasingQuestionsIndicies([...rephrasingQuestionsIndicies, questionIndex])
         let question = questions[questionIndex]
         if (!question.original) { return }
-        paraphrase(question.original, 0.75, 'Rephrase the question, change main variables')
+        paraphrase(question.original)
             .then((result) => {
                 var updatedQuestions = [...questions]
                 updatedQuestions[questionIndex].rephrased = result
                 setQuestions(updatedQuestions)
-                setRephrasingQuestionsIndicies(rephrasingQuestionsIndicies.filter(index => index != questionIndex))
             })
             .catch((error) => {
                 setError(error.message)
+            })
+            .finally(() => {
+                setRephrasingQuestionsIndicies(rephrasingQuestionsIndicies.filter(index => index != questionIndex))
             })
     }
 
