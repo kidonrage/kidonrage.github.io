@@ -37,7 +37,7 @@ export async function paraphrase(text) {
 export async function generateQuestions(context, questionsCount, questionsType) {
     const body = {
         "model": "text-davinci-003",
-        "prompt": `Generate ${questionsCount} ${questionsType} questions based on this text: ${context}`,
+        "prompt": `Generate ${questionsCount} ${questionsType} questions based on this text: ${context}. Mark right answers with "(+) "`,
         "temperature": 0.9,
         "max_tokens": 512
     }

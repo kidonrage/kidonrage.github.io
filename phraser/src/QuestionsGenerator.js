@@ -155,19 +155,21 @@ export const QuestionsGenerator = ({ setError }) => {
                                     <TextField
                                         label="Context"
                                         multiline
-                                        rows={4}
+                                        minRows={4}
                                         value={contextString}
                                         fullWidth
                                         onChange={event => { handleContextInput(event) }}
+                                        maxRows={24}
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={6}>
                                     <TextField
                                         label="Generated questions"
                                         multiline
-                                        rows={4}
+                                        minRows={4}
                                         value={generatedQuestionsString}
                                         fullWidth
+                                        maxRows={24}
                                         InputProps={{
                                             readOnly: true,
                                         }}
