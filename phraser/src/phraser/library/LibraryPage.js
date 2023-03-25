@@ -30,11 +30,11 @@ class GroupModel {
 
 export const LibraryPage = ({ setError }) => {
 
-    const [groups, setGroups] = React.useState([])
+    const [groups, setGroups] = React.useState(null)
     const addGroupTabValue = 'add'
 
     const [selectedTab, setSelectedTab] = React.useState('')
-    const [currentGroupDocuments, setCurrentGroupDocuments] = React.useState([])
+    const [currentGroupDocuments, setCurrentGroupDocuments] = React.useState(null)
 
     const [newGroupDialogOpen, setNewGroupDialogOpen] = React.useState(false)
     const [newDocumentDialogOpen, setNewDocumentDialogOpen] = React.useState(false)
@@ -51,7 +51,10 @@ export const LibraryPage = ({ setError }) => {
     }, [])
 
     useEffect(() => {
+        if (!!!groups) { return }
+
         let selectedGroupIndex = groups.findIndex(group => group.id == selectedTab)
+
         if (selectedGroupIndex == -1) { return }
 
         let groupName = groups[selectedGroupIndex].title
@@ -127,20 +130,22 @@ export const LibraryPage = ({ setError }) => {
                     </Grid>
                 </Grid>
 
-                <Grid
-                    container
-                    direction="row"
-                    alignItems="center"
-                >
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider', maxWidth: '100%' }}>
-                        <Tabs value={selectedTab} onChange={handleSelectSubjectTab} scrollButtons="auto" variant="scrollable">
-                            {groups.map((group) => (<Tab label={group.title} value={group.id} key={group.id} sx={{ p: 0 }} />))}
-                            <Tab icon={<Add />} iconPosition="start" label="Add group" value={addGroupTabValue} />
-                        </Tabs>
-                    </Box>
-                </Grid>
+                {!!groups && (
+                    <Grid
+                        container
+                        direction="row"
+                        alignItems="center"
+                    >
+                        <Box sx={{ borderBottom: 1, borderColor: 'divider', maxWidth: '100%' }}>
+                            <Tabs value={selectedTab} onChange={handleSelectSubjectTab} scrollButtons="auto" variant="scrollable">
+                                {groups.map((group) => (<Tab label={group.title} value={group.id} key={group.id} sx={{ p: 0 }} />))}
+                                <Tab icon={<Add />} iconPosition="start" label="Add group" value={addGroupTabValue} />
+                            </Tabs>
+                        </Box>
+                    </Grid>
+                )}
 
-                {!!selectedTab && (
+                {!!selectedTab && !!currentGroupDocuments && (
                     <Grid
                         container
                         direction="row"
@@ -157,13 +162,15 @@ export const LibraryPage = ({ setError }) => {
                 onClose={handleCloseNewGroupDialog}
                 handleSaveNewGroup={handleCreateGroup}
             />
-            <NewDocumentDialog
-                open={newDocumentDialogOpen}
-                onClose={handleCloseNewDocumentDialog}
-                groups={groups}
-                selectedGroup={selectedTab}
-                handleSaveNewDocument={handleAddDocumentToGroup}
-            />
+            {!!groups && (
+                <NewDocumentDialog
+                    open={newDocumentDialogOpen}
+                    onClose={handleCloseNewDocumentDialog}
+                    groups={groups}
+                    selectedGroup={selectedTab}
+                    handleSaveNewDocument={handleAddDocumentToGroup}
+                />
+            )}
         </Box>
     )
 }

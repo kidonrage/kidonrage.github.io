@@ -2,10 +2,8 @@ const groupsLSKey = "groups"
 
 export function fetchGroups() {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let cachedGroups = JSON.parse(localStorage.getItem(groupsLSKey))
-            resolve(!!cachedGroups ? cachedGroups : []);
-        }, 300);
+        let cachedGroups = JSON.parse(localStorage.getItem(groupsLSKey))
+        resolve(!!cachedGroups ? cachedGroups : []);
     });
 }
 
@@ -18,10 +16,8 @@ export async function addGroup(group) {
 export function fetchDocuments(groupId) {
     let key = getDocumentsLSKey(groupId)
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let cachedDocuments = JSON.parse(localStorage.getItem(key))
-            resolve(!!cachedDocuments ? cachedDocuments : []);
-        }, 300);
+        let cachedDocuments = JSON.parse(localStorage.getItem(key))
+        resolve(!!cachedDocuments ? cachedDocuments : []);
     });
 }
 
