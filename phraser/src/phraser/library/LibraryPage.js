@@ -1,29 +1,30 @@
 import React, { useEffect } from "react";
 
-import { Grid, Box, Container, Button, TextField, Tabs, Tab, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { Grid, Box, Container, Button, TextField, Tabs, Tab, Dialog, DialogTitle, DialogContent, DialogActions, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 import Add from "@mui/icons-material/Add";
-import { DocumentsList } from "./library/DocumentsList";
-import { guidGenerator } from "../utils";
-import { NewDocumentDialog } from "./library/NewDocumentDialog";
-import { NewGroupDialog } from "./library/NewGroupDialog";
+import { DocumentsList } from "./components/DocumentsList";
+import { guidGenerator } from "../../utils";
+import { NewDocumentDialog } from "./components/NewDocumentDialog";
+import { NewGroupDialog } from "./components/NewGroupDialog";
+import { addDocument, addGroup, fetchDocuments, fetchGroups } from "../utils/libraryRepository";
 
 class DocumentModel {
 
-    constructor(title, examDate) {
+    constructor(title, groupId, examDate) {
         this.id = guidGenerator()
         this.title = title
+        this.group = groupId
         this.examDate = examDate
     }
 }
 
 class GroupModel {
 
-    constructor(title, documents) {
+    constructor(title) {
         this.id = guidGenerator()
         this.title = title
-        this.documents = documents
     }
 }
 
@@ -38,6 +39,31 @@ export const LibraryPage = ({ setError }) => {
     const [newGroupDialogOpen, setNewGroupDialogOpen] = React.useState(false)
     const [newDocumentDialogOpen, setNewDocumentDialogOpen] = React.useState(false)
 
+    useEffect(() => {
+        fetchGroups()
+            .then(initialGroups => {
+                setGroups(initialGroups)
+                if (initialGroups.length > 0) {
+                    setSelectedTab(initialGroups[0].id)
+                }
+            })
+            .catch(error => setError(error))
+    }, [])
+
+    useEffect(() => {
+        let selectedGroupIndex = groups.findIndex(group => group.id == selectedTab)
+        if (selectedGroupIndex == -1) { return }
+
+        let groupName = groups[selectedGroupIndex].title
+
+        fetchDocuments(selectedTab)
+            .then((groupDocuments) => {
+                setCurrentGroupDocuments(groupDocuments)
+            })
+            .catch(error => setError(error))
+    }, [selectedTab])
+
+
     const handleSelectSubjectTab = (event, newValue) => {
         if (newValue == addGroupTabValue) {
             setNewGroupDialogOpen(true)
@@ -48,19 +74,17 @@ export const LibraryPage = ({ setError }) => {
     }
 
     const handleAddDocumentToGroup = (title, groupId, examDate) => {
-        const groupIndex = groups.findIndex((group) => group.id == groupId)
-        if (groupIndex == -1) { return }
-
-        var updatedGroups = [...groups]
-        updatedGroups[groupIndex].documents = [
-            ...updatedGroups[groupIndex].documents,
-            new DocumentModel(title, examDate)
-        ]
-        setGroups(updatedGroups)
+        let document = new DocumentModel(title, groupId, examDate)
+        addDocument(document)
+            .then(() => {
+                setCurrentGroupDocuments([document, ...currentGroupDocuments])
+            })
+            .catch((error) => setError(error))
     }
 
-    const handleCreateGroup = (groupName) => {
-        let newGroup = new GroupModel(groupName, [])
+    const handleCreateGroup = async (groupName) => {
+        let newGroup = new GroupModel(groupName)
+        await addGroup(newGroup)
         let updatedGroups = [
             ...groups,
             newGroup
@@ -77,24 +101,6 @@ export const LibraryPage = ({ setError }) => {
         setNewDocumentDialogOpen(false)
     }
 
-    useEffect(() => {
-        let mockedFirstModel = new GroupModel('Math', [
-            new DocumentModel('Something in math', null),
-            new DocumentModel('Something in math', null)
-        ])
-        setGroups([mockedFirstModel])
-        setSelectedTab(mockedFirstModel.id)
-    }, [])
-
-    useEffect(() => {
-        let selectedGroupIndex = groups.findIndex(group => group.id == selectedTab)
-        var documents = []
-        if (selectedGroupIndex > -1) {
-            documents = groups[selectedGroupIndex].documents
-        }
-        setCurrentGroupDocuments(documents)
-    }, [groups, selectedTab])
-
     return (
         <Box
             sx={{
@@ -104,10 +110,26 @@ export const LibraryPage = ({ setError }) => {
             }}
         >
             <Container>
+
                 <Grid
                     container
                     direction="row"
-                    justifyContent="space-between"
+                    alignItems="center"
+                >
+                    <Grid item>
+                        <Typography
+                            component="h5"
+                            variant="h5"
+                            color="text.primary"
+                        >
+                            Library
+                        </Typography>
+                    </Grid>
+                </Grid>
+
+                <Grid
+                    container
+                    direction="row"
                     alignItems="center"
                 >
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', maxWidth: '100%' }}>
@@ -117,15 +139,15 @@ export const LibraryPage = ({ setError }) => {
                         </Tabs>
                     </Box>
                 </Grid>
+
                 <Grid
                     container
                     direction="row"
-                // justifyContent="space-between"
-                // alignItems="center"
-                // sx={{ pb: 4 }}
+                    justifyContent="center"
                 >
                     <DocumentsList documents={currentGroupDocuments} addDocument={() => setNewDocumentDialogOpen(true)} />
                 </Grid>
+
             </Container>
 
             <NewGroupDialog

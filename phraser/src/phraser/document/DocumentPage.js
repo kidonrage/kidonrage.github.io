@@ -1,68 +1,80 @@
 import React from "react";
 
 import { Grid, Box, Container, Button, Typography, Switch, Paper, TextField, FormControlLabel, Tabs, Tab, Dialog, DialogTitle, DialogContent, DialogActions, Breadcrumbs } from '@mui/material';
-import { LoadingButton, TabPanel, TabList, TabContext } from '@mui/lab';
+import { LoadingButton } from '@mui/lab';
 
 
 import CachedIcon from '@mui/icons-material/Cached';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import AddIcon from '@mui/icons-material/Add';
 
-import { paraphrase } from '../utils';
+import { paraphrase } from '../../utils';
 import copy from 'clipboard-copy'
-import Add from "@mui/icons-material/Add";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { fetchQuestions, setDocumentQuestions } from "../utils/libraryRepository";
 
 class QuestionModel {
 
-    constructor(original, rephrased, isParaphrasing, isFixed) {
+    constructor(original, rephrased, isFixed) {
         this.original = original
         this.rephrased = rephrased
-        this.isParaphrasing = isParaphrasing
         this.isFixed = isFixed
+    }
+}
+
+class QuestionViewModel {
+
+    constructor(question, isParaphrasing = false) {
+        this.question = question
+        this.isParaphrasing = isParaphrasing
     }
 }
 
 export const DocumentPage = ({ setError }) => {
 
     const [rephrasingQuestionsIndicies, setRephrasingQuestionsIndicies] = React.useState([])
-    const [questions, setQuestions] = React.useState([
-        new QuestionModel('How old are you?', '', false, false)
-    ]);
+    const [questions, setQuestions] = React.useState([]);
 
-    let tabs = ['Math', 'Biology']
-    const addGroupTabValue = 'add'
-    const [selectedTab, setSelectedTab] = React.useState('Math')
-    const [newGroupDialogOpen, setNewGroupDialogOpen] = React.useState(false)
+    let { documentId } = useParams();
+
+    React.useEffect(() => {
+        fetchQuestions(documentId)
+            .then((result) => {
+                setQuestions(result.map(question => new QuestionViewModel(question, false)))
+            })
+            .catch(error => setError(error))
+    }, [])
 
     const handleOriginalQuestionInput = (questionIndex, event) => {
         var updatedQuestions = [...questions]
-        updatedQuestions[questionIndex].original = event.target.value
+        updatedQuestions[questionIndex].question.original = event.target.value
         setQuestions(updatedQuestions)
     }
 
     const handleToggleFixQuestion = (questionIndex) => {
         var updatedQuestions = [...questions]
-        updatedQuestions[questionIndex].isFixed = !updatedQuestions[questionIndex].isFixed
+        updatedQuestions[questionIndex].question.isFixed = !updatedQuestions[questionIndex].question.isFixed
         setQuestions(updatedQuestions)
+        setDocumentQuestions(updatedQuestions.map((questionViewModel) => questionViewModel.question), documentId)
     }
 
     const addQuestion = () => {
         setQuestions([
             ...questions,
-            new QuestionModel('', '', false, false)
+            new QuestionViewModel(new QuestionModel('', '', false, false), false)
         ])
     }
 
     const paraphraseQuestion = (questionIndex) => {
         setRephrasingQuestionsIndicies([...rephrasingQuestionsIndicies, questionIndex])
-        let question = questions[questionIndex]
+        let question = questions[questionIndex].question
         if (!question.original) { return }
         paraphrase(question.original)
             .then((result) => {
                 var updatedQuestions = [...questions]
-                updatedQuestions[questionIndex].rephrased = result
+                updatedQuestions[questionIndex].question.rephrased = result
                 setQuestions(updatedQuestions)
+                setDocumentQuestions(updatedQuestions.map((questionViewModel) => questionViewModel.question), documentId)
             })
             .catch((error) => {
                 setError(error.message)
@@ -74,25 +86,12 @@ export const DocumentPage = ({ setError }) => {
 
     const copyAllTexts = () => {
         const stringToCopy = questions.reduce(
-            (acc, question, index) => acc + question.rephrased + (index < questions.length - 1 ? "\n\n" : ""),
+            (acc, question, index) => acc + question.question.rephrased + (index < questions.length - 1 ? "\n\n" : ""),
             ""
         )
         console.log(stringToCopy)
         if (!stringToCopy) { return }
         copy(stringToCopy)
-    }
-
-    const handleSelectSubjectTab = (event, newValue) => {
-        if (newValue == addGroupTabValue) {
-            setNewGroupDialogOpen(true)
-            return
-        } else {
-            setSelectedTab(newValue)
-        }
-    }
-
-    const handleCloseNewGroupDialog = () => {
-        setNewGroupDialogOpen(false)
     }
 
     return (
@@ -168,7 +167,7 @@ export const DocumentPage = ({ setError }) => {
                         </Typography>
                     </Grid>
 
-                    {questions.map((question, index) => {
+                    {questions.map((questionViewModel, index) => {
                         return (
                             <Grid key={index} item xs={12}>
                                 <Paper
@@ -184,7 +183,7 @@ export const DocumentPage = ({ setError }) => {
                                                 label="Original Question"
                                                 multiline
                                                 rows={4}
-                                                value={question.original}
+                                                value={questionViewModel.question.original}
                                                 fullWidth
                                                 onChange={event => { handleOriginalQuestionInput(index, event) }}
                                             />
@@ -194,7 +193,7 @@ export const DocumentPage = ({ setError }) => {
                                                 label="Rephrased question"
                                                 multiline
                                                 rows={4}
-                                                value={question.rephrased}
+                                                value={questionViewModel.question.rephrased}
                                                 fullWidth
                                                 InputProps={{
                                                     readOnly: true,
@@ -205,7 +204,7 @@ export const DocumentPage = ({ setError }) => {
                                             <LoadingButton
                                                 variant="contained"
                                                 loading={rephrasingQuestionsIndicies.includes(index)}
-                                                disabled={!question.original || question.isFixed}
+                                                disabled={!questionViewModel.question.original || questionViewModel.question.isFixed}
                                                 loadingPosition="start"
                                                 startIcon={<CachedIcon />}
                                                 onClick={() => paraphraseQuestion(index)}
@@ -218,9 +217,9 @@ export const DocumentPage = ({ setError }) => {
                                                 variant="outlined"
                                                 startIcon={<ContentCopyIcon />}
                                                 disableElevation
-                                                disabled={!question.rephrased}
+                                                disabled={!questionViewModel.question.rephrased}
                                                 onClick={() => {
-                                                    copy(question.rephrased)
+                                                    copy(questionViewModel.question.rephrased)
                                                 }}
                                                 sx={{
                                                     mr: 2
@@ -228,12 +227,12 @@ export const DocumentPage = ({ setError }) => {
                                             >
                                                 Copy text
                                             </Button>
-                                            {question.rephrased && (
+                                            {questionViewModel.question.rephrased && (
                                                 <FormControlLabel
                                                     control={
                                                         <Switch
-                                                            value={question.isFixed}
-                                                            checked={question.isFixed}
+                                                            value={questionViewModel.question.isFixed}
+                                                            checked={questionViewModel.question.isFixed}
                                                             onChange={() => { handleToggleFixQuestion(index) }}
                                                             inputProps={{ 'aria-label': 'controlled' }}
                                                         />
@@ -251,24 +250,6 @@ export const DocumentPage = ({ setError }) => {
 
                 </Grid>
             </Container>
-            <Dialog open={newGroupDialogOpen} onClose={handleCloseNewGroupDialog}>
-                <DialogTitle>New group</DialogTitle>
-                <DialogContent>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Group name"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                    />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleCloseNewGroupDialog}>Cancel</Button>
-                    <Button onClick={() => { }}>Save</Button>
-                </DialogActions>
-            </Dialog>
         </Box>
     )
 }

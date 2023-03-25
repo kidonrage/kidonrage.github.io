@@ -17,7 +17,7 @@ import { Phraser } from './phraser/Phraser';
 import { QuestionsGenerator } from './questionsGenerator/QuestionsGenerator';
 
 import { ReactComponent as PhraserLogo } from './logo.svg';
-import { LibraryPage } from './phraser/LibraryPage';
+import { LibraryPage } from './phraser/library/LibraryPage';
 
 const theme = createTheme({
   palette: {

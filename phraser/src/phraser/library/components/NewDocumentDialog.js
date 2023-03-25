@@ -10,7 +10,7 @@ export const NewDocumentDialog = ({ selectedGroup, handleSaveNewDocument, groups
     const [date, setDate] = React.useState(null)
 
     const handleSave = () => {
-        handleSaveNewDocument(title, group, date.unix())
+        handleSaveNewDocument(title, group, (!!date ? date.unix() : null))
         close()
     }
 
