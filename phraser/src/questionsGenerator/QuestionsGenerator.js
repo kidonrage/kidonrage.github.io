@@ -4,7 +4,7 @@ import { Grid, Box, Container, Button, Typography, Input, Paper, TextField, Form
 import { Save as SaveIcon } from "@mui/icons-material";
 import { LoadingButton } from '@mui/lab';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import { generateQuestions } from "./utils";
+import { generateQuestions } from "../utils";
 
 export const QuestionsGenerator = ({ setError }) => {
 

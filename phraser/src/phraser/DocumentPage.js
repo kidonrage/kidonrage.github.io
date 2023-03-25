@@ -1,15 +1,17 @@
 import React from "react";
 
-import { Grid, Box, Container, Button, Typography, Switch, Paper, TextField, FormControlLabel } from '@mui/material';
-import { LoadingButton } from '@mui/lab';
+import { Grid, Box, Container, Button, Typography, Switch, Paper, TextField, FormControlLabel, Tabs, Tab, Dialog, DialogTitle, DialogContent, DialogActions, Breadcrumbs } from '@mui/material';
+import { LoadingButton, TabPanel, TabList, TabContext } from '@mui/lab';
 
 
 import CachedIcon from '@mui/icons-material/Cached';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import AddIcon from '@mui/icons-material/Add';
 
-import { paraphrase } from './utils';
+import { paraphrase } from '../utils';
 import copy from 'clipboard-copy'
+import Add from "@mui/icons-material/Add";
+import { Link } from "react-router-dom";
 
 class QuestionModel {
 
@@ -21,12 +23,17 @@ class QuestionModel {
     }
 }
 
-export const Phraser = ({ setError }) => {
+export const DocumentPage = ({ setError }) => {
 
     const [rephrasingQuestionsIndicies, setRephrasingQuestionsIndicies] = React.useState([])
     const [questions, setQuestions] = React.useState([
         new QuestionModel('How old are you?', '', false, false)
     ]);
+
+    let tabs = ['Math', 'Biology']
+    const addGroupTabValue = 'add'
+    const [selectedTab, setSelectedTab] = React.useState('Math')
+    const [newGroupDialogOpen, setNewGroupDialogOpen] = React.useState(false)
 
     const handleOriginalQuestionInput = (questionIndex, event) => {
         var updatedQuestions = [...questions]
@@ -75,6 +82,19 @@ export const Phraser = ({ setError }) => {
         copy(stringToCopy)
     }
 
+    const handleSelectSubjectTab = (event, newValue) => {
+        if (newValue == addGroupTabValue) {
+            setNewGroupDialogOpen(true)
+            return
+        } else {
+            setSelectedTab(newValue)
+        }
+    }
+
+    const handleCloseNewGroupDialog = () => {
+        setNewGroupDialogOpen(false)
+    }
+
     return (
         <Box
             sx={{
@@ -84,6 +104,20 @@ export const Phraser = ({ setError }) => {
             }}
         >
             <Container>
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    sx={{ pb: 4 }}
+                >
+                    <Breadcrumbs aria-label="breadcrumb">
+                        <Link underline="hover" color="inherit" to="phraser">
+                            Phraser library
+                        </Link>
+                        <Typography color="text.primary">Document</Typography>
+                    </Breadcrumbs>
+                </Grid>
                 <Grid
                     container
                     direction="row"
@@ -216,8 +250,25 @@ export const Phraser = ({ setError }) => {
                     }
 
                 </Grid>
-
             </Container>
+            <Dialog open={newGroupDialogOpen} onClose={handleCloseNewGroupDialog}>
+                <DialogTitle>New group</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Group name"
+                        type="text"
+                        fullWidth
+                        variant="standard"
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseNewGroupDialog}>Cancel</Button>
+                    <Button onClick={() => { }}>Save</Button>
+                </DialogActions>
+            </Dialog>
         </Box>
     )
 }
