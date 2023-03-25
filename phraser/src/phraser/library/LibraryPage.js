@@ -140,13 +140,15 @@ export const LibraryPage = ({ setError }) => {
                     </Box>
                 </Grid>
 
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="center"
-                >
-                    <DocumentsList documents={currentGroupDocuments} addDocument={() => setNewDocumentDialogOpen(true)} />
-                </Grid>
+                {!!selectedTab && (
+                    <Grid
+                        container
+                        direction="row"
+                        justifyContent="center"
+                    >
+                        <DocumentsList documents={currentGroupDocuments} addDocument={() => setNewDocumentDialogOpen(true)} />
+                    </Grid>
+                )}
 
             </Container>
 
