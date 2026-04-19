@@ -1,0 +1,333 @@
+@media only screen and (max-width : 1450px){
+	.materials .content::after{
+		width: 50%;
+		background-size: contain;
+		background-position: center bottom;
+	}
+}
+@media only screen and (max-width : 1200px){
+
+	.materials .content::after{
+		width: 38%;
+	}
+	#featured>img, div.orbit-wrapper, div.orbit-wrapper div#featured{
+		width: 600px !important;
+		height: auto;
+	}
+	div.c-wrap-0{
+		width: 100%;
+	}
+	section .content, header .content, footer .content, div.i-container{
+		width: 100%;
+	}
+}
+@media only screen and (max-width : 992px){
+	.c-wrap{
+		width: 100% !important;
+	}
+	header .content .title{
+		font-size: 40px;
+	}
+	div.family{
+		margin: 30px 0;
+	}
+	.materials .content{
+		padding-bottom: 36px;
+	}
+	.materials .content::after{
+		height: auto;
+		bottom: 0;
+		top: 0;
+	}
+	.materials p:last-child{
+		margin-bottom: 0;
+	}
+	div.flex-gorisontal-middle{
+		display: block;
+		text-align: center;
+	}
+	div.flex-gorisontal-middle .h-m{
+		display: block;
+		margin-bottom: 10px;
+	}
+	div.flex-gorisontal-middle a{
+		display: inline-block;
+		position: relative;
+		padding: 0;
+	}
+	div.flex-gorisontal-middle a>span{
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		line-height: 36px;
+	}
+	div.flex-gorisontal-down{
+		display: block;
+		width: 100%;
+	}
+	div[id^="featured"]>img{
+		width: 100% !important;
+		height: auto !important;
+	}
+	div[id^="featured"]>img:first-child{
+		position: relative;
+	}
+	div[id^="is"]{
+		width: 100%;
+	}
+	div.orbit-wrapper>div.orbit-wrapper{
+		width: 100% !important;
+	}
+	div.slider-nav span{
+		height: auto;
+		top: 0;
+		bottom: 0;
+	}
+	div.orbit-wrapper{
+		margin: 0 auto;
+		height: auto !important;
+	}
+	div.i-slaider-right{
+		margin: 0 auto;
+		float: none;
+		width: 60%;
+		text-align: center;
+	}
+	div.i-slaider-right-up{
+		width: 100%;
+		margin: 0;
+		display: block;
+	}
+	.h-r-up{
+		text-align: center;
+		margin-top: 20px;
+	}
+	div.h-r-text br{
+		display: none;
+	}
+	div.div-orange{
+		margin: 0 auto;
+	}
+	div.slideron{
+		width: 100% !important;
+		height: auto !important;
+	}
+	.materials{
+		height: auto;
+	}
+	.contanet .tools .content .items{
+		display: block !important;
+	}
+	.tools .content .items .item{
+		width: 30%;
+	}
+	.main-page-call .content form input,.main-page-call .content form input[type=submit]{
+		display: block;
+		margin: 8px auto;
+		width: 50%;
+	}
+}
+@media only screen and (max-width : 768px){
+	body a.button-call{
+		display: block;
+	}
+	.fancybox-wrap{
+		width: 80% !important;
+	}
+	.fancybox-skin, .fancybox-inner{
+		width: 100% !important;
+		margin: 0 auto;
+	}
+	#popup-materials .popup-row input[type='text'], #popup-materials .popup-row input[type='email'], #popup-jobs .popup-row input[type='text'], #popup-jobs .popup-row input[type='email'], #popup-estimate-feedback .popup-row input[type='text'], #popup-estimate-feedback .popup-row input[type='email'], #popup-file-feedback .popup-row input[type='text'], #popup-file-feedback .popup-row input[type='email'], #popup-call-feedback .popup-row input[type='text'], #popup-call-feedback .popup-row input[type='email']{
+		width: 100%;
+		margin: 0 auto;
+	}
+	header{
+		height: auto;
+		padding-bottom: 30px;
+	}
+	.top10 .content .family .item:first-child, .top10 .content .family .item:last-child{
+		display: block;
+		width: 100%;
+		background-position: center top;
+		padding-top: 130px;
+		margin: 30px 0;
+	}
+	.top10 .content .family .item:last-child{
+		padding-top: 160px;
+		padding-right: 0;
+	}
+	.top10 .content .family .item div[class^="text"],.top10 .content .family .item .count{
+		width: 100%;
+		display: block;
+		margin: 0;
+		text-align: center;
+	}
+	.top10 .content .family .item:last-child .text{
+		margin: 0;
+		text-align: center;
+	}
+	.top10 .content .family .item:last-child{
+		text-align: center;
+	}
+	.top10 .content .family .item:last-child .count{
+		margin: 20px 0;
+	}
+	.how-we-work .content .how-work-block, .how-we-work .content .one-day{
+		width: 100%;
+	}
+	.how-we-work .content .how-work-block .item .num{
+		left: 10px;
+	}
+	.how-we-work .content .how-work-block .item{
+		padding-left: 60px;
+	}
+	#featured>img, div.orbit-wrapper, div.orbit-wrapper div#featured{
+		width: 100% !important;
+	}
+	.materials .content{
+		padding: 0 15px;
+	}
+
+	.materials .content::after{
+		position: static;
+		height: 200px;
+		width: 100%;
+		margin-top: 20px;
+	}
+	.tools .content .items{
+		display: block;
+		text-align: center;
+	}
+	.tools .content .items .item{
+		display: block;
+		width: 80%;
+		background-position: center top;
+		margin: 0 auto 40px auto;
+	}
+	.main-page-call .content form input, .main-page-call .content form input[type=submit]{
+		width: 70%;
+	}
+}
+@media only screen and (max-width : 480px){
+	.popup-feedback .title{
+		font-size: 22px;
+	}
+	#popup-materials .popup-row input[type='text'], #popup-materials .popup-row input[type='email'], #popup-jobs .popup-row input[type='text'], #popup-jobs .popup-row input[type='email'], #popup-estimate-feedback .popup-row input[type='text'], #popup-estimate-feedback .popup-row input[type='email'], #popup-file-feedback .popup-row input[type='text'], #popup-file-feedback .popup-row input[type='email'], #popup-call-feedback .popup-row input[type='text'], #popup-call-feedback .popup-row input[type='email'],
+	#popup-call-feedback .button{
+		width: 90%;
+		margin: 0 auto;
+	}
+	#popup-call-feedback .button{
+		font-size: 11px;
+		padding: 0;
+	}
+	header .content .logo{
+		width: 65%;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	header .content .title{
+		font-size: 30px;
+		line-height: 1.4;
+		margin-top: 30px;
+	}
+	header .content .pluses{
+		margin-top: 50px;
+	}
+	header .content .pluses .item{
+		font-size: 14px;
+	}
+	.top10 .content .images img:first-child{
+		margin: 5px auto;
+	}
+	div.flex-gorisontal-up{
+		display: block;
+		width: 100%;
+	}
+	.h-up-down{
+		text-align: center;
+	}
+	div.flex-gorisontal-up > a{
+		display: block;
+		width: 80%;
+		margin: 0 auto;
+		height: 60px;
+		padding-top: 9px;
+		margin-bottom: 8px;
+	}
+	header .content .call-me{
+		height: auto;
+		padding: 8px 15px;
+		font-size: 19px;
+		width: 93%;
+	}
+	.main-page-call .content form input, .main-page-call .content form input[type=submit]{
+		width: 95%;
+	}
+	.how-we-work .content .how-work-block .item .num{
+		left: 0;
+	}
+	.how-we-work .content .how-work-block .item{
+		padding-left: 40px;
+	}
+	div.div-orange{
+		width: 100%;
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	div.div-orange > p{
+		font-size: 15px;
+		margin-left: 10px;
+	}
+	div.i-slaider-right{
+		margin: 10px 0 0 0;
+		width: 100%;
+		padding: 0 20px;
+	}
+	section .content, header .content, footer .content{
+		padding: 0 10px;
+	}
+	.main-page-call .content .title,
+	.top10 .content .subtitle{
+		font-size: 28px;
+		line-height: 1.2;
+	}
+	.top10 .content .title{
+		font-size: 24px;
+	}
+	.main-page-call .content .subtitle{
+		font-size: 17px;
+		width: 100%;
+	}
+	footer .content{
+		display: block;
+	}
+	footer .content > div{
+		display: block;
+		width: 100%;
+		float: none;
+		max-width: 100%;
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	footer .content .right{
+		width: 100%;
+	}
+	footer .content .right .phone-time{
+		text-align: center;
+		float: none;
+		width: 100%;
+	}
+	body a.button-call{
+		width: 70px;
+		height: 70px;
+	}
+	div.flex-gorisontal-down,div.c-wrap-0,div.c-wrap{
+		margin-top: 20px;
+	}
+}

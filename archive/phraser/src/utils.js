@@ -1,0 +1,71 @@
+import CryptoJS from "crypto-js";
+
+const encryptedApiKey = "U2FsdGVkX18CvsVAjIFGmfAW7vjedPsqMcwb2Et31FI0j+HCSyfzenzBeAgc+T//yDpTbbF+ExVTt/Yvl6z+8dG/H0EL1pqNzpzzBS5uT+M="
+const encryptedEditsEndpointUrl = "U2FsdGVkX19yxCbwKKqFG22kK6CE8U+YHxx6hY8ly/OJCDr9TT4sW3N44shPT8QC"
+const encryptedCompletionEndpointUrl = "U2FsdGVkX196tQm0W8Ep2EpnmvU9FGRWwfv6HewmRSWQxJj2dxc8AZL4DtDRsm28p+AoFA2EeUI+LFS/PuxuuQ=="
+
+const apiKey = CryptoJS.AES.decrypt(encryptedApiKey, "dontstealthiskey").toString(CryptoJS.enc.Utf8);
+
+export async function paraphrase(text) {
+    const body = {
+        "model": "text-davinci-003",
+        "prompt": `Rephrase question and change its main variables: ${text}`,
+        "temperature": 0.9
+    }
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(body),
+        method: 'POST'
+    }
+
+    const apiUrl = CryptoJS.AES.decrypt(encryptedCompletionEndpointUrl, "dontstealthiskey").toString(CryptoJS.enc.Utf8);
+    let response = await fetch(apiUrl, params)
+
+    if (!response.ok) {
+        let error = await response.json()
+        throw error.error
+    }
+
+    let responseObject = await response.json()
+
+    return responseObject.choices[0].text.replace(/^\s+|\s+$/g, '')
+}
+
+export async function generateQuestions(context, questionsCount, questionsType) {
+    const body = {
+        "model": "text-davinci-003",
+        "prompt": `Generate ${questionsCount} ${questionsType} questions based on this text: ${context}. Mark right answers with "(+) "`,
+        "temperature": 0.9,
+        "max_tokens": 512
+    }
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(body),
+        method: 'POST'
+    }
+
+    const apiUrl = CryptoJS.AES.decrypt(encryptedCompletionEndpointUrl, "dontstealthiskey").toString(CryptoJS.enc.Utf8);
+    let response = await fetch(apiUrl, params)
+
+    if (!response.ok) {
+        let error = await response.json()
+        throw error.error
+    }
+
+    let responseObject = await response.json()
+
+    return responseObject.choices[0].text.replace(/^\s+|\s+$/g, '')
+}
+
+export function guidGenerator() {
+    var S4 = function () {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}

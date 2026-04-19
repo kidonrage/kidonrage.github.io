@@ -1,0 +1,224 @@
+body{
+	background-color: #edf0f1;
+	padding: 80px 0;
+}
+
+body, input, button{
+	font-family: 'Roboto', sans-serif;
+}
+
+.noFill{
+	fill: none;
+}
+
+header{
+	width: 100%;
+	height: 80px;
+	position: fixed;
+	padding: 15px;
+	top: 0;
+	left: 0;
+	z-index:5;
+	background: #25b99a;
+	box-shadow: 0px 2px 4px rgba(44,62,80,.15);
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+header input{
+	width: 100%;
+	height: 50px;
+	float: left;
+	background: rgba(255,255,255,.2);
+	border: none;
+	box-shadow: none;
+	outline: none;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 400;
+	text-indent: 18px;
+	padding: 0 60px 0 0;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 25px;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+header input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: rgba(255,255,255,.75);
+}
+header input::-moz-placeholder { /* Firefox 19+ */
+	color: rgba(255,255,255,.75);
+}
+header input:-ms-input-placeholder { /* IE 10+ */
+	color: rgba(255,255,255,.75);
+}
+header input:-moz-placeholder { /* Firefox 18- */
+	color: rgba(255,255,255,.75);
+}
+
+header button{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 16px;
+	right: 15px;
+	z-index: 2;
+	border-radius: 25px;
+	background: #fff;
+	border: 0;
+	box-shadow: none;
+	outline: none;
+	cursor: pointer;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+header button svg{
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -8px 0 0 -8px;
+}
+header button svg .fill{
+	fill: #25b99a;
+}
+
+.container{
+	width: 100%;
+	padding: 15px;
+	float: left;
+}
+ul.todo{
+	width: 100%;
+	clear: both;
+}
+ul.todo li{
+	width: 100%;
+	min-height: 50px;
+	float: left;
+	font-size: 14px;
+	font-weight: 500;
+	color: #444;
+	line-height: 22px;
+	background-color: #fff;
+	border-radius: 5px;
+	position: relative;
+	box-shadow: 0px 1px 2px rgba(44,62,80,.1);
+	margin: 0 0 10px 0;
+	padding: 14px 100px 14px 14px;
+}
+ul.todo li:last-of-type{
+	margin-bottom: 0;
+}
+ul.todo li .buttons{
+	width: 100px;
+	height: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+ul.todo li .buttons button{
+	width: 50px;
+	height: 50px;
+	float: left;
+	background: none;
+	border: none;
+	position: relative;
+	box-shadow: none;
+	outline: none;
+	cursor: pointer;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+ul.todo li .buttons button:last-of-type:before{
+	content: "";
+	width: 1px;
+	height: 30px;
+	position: absolute;
+	top: 10px;
+	left: 0;
+	background: #edf0f1;
+}
+ul.todo li .buttons button svg{
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -11px 0 0 -11px; 
+}
+ul.todo li .buttons button svg .fill{
+	transition: fill 0.18s ease;
+}
+ul.todo li .buttons button svg{
+	transition: background 0.18s ease;
+}
+ul.todo li .buttons button.remove svg .fill{
+	fill: #c0cecb;
+}
+ul.todo li .buttons button.remove:hover svg .fill{
+	fill: #e85656;
+}
+ul.todo li .buttons button.complete svg{
+	border-radius: 15px;
+	border: 1.5px solid #25b99a;
+}
+ul#completed li .buttons button.complete svg{
+	background: #25b99a;
+}
+ul:not(#completed) li .buttons button.complete:hover svg{
+	background: rgba(37,185,154,.75);
+}
+ul:not(#completed) li .buttons button.complete:hover svg .fill{
+	fill: #fff;
+}
+ul li .buttons button.complete svg .fill{
+	fill: #25b99a;
+}
+ul#completed li .buttons button.complete svg .fill{
+	fill: #fff;
+}
+ul.todo li .buttons button.remove:hover svg .fill{
+	fill: #e85656;
+}
+ul#completed{
+	position: relative;
+	padding: 60px 0 0 0;
+}
+ul#completed:before{
+	content: '';
+	width: 150px;
+	height: 1px;
+	background: #d8e5e0;
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	margin: 0 0 0 -75px;
+}
+ul#todo:empty:after{
+	content: 'У тебя пока нет дел, займись чем-нибудь!';
+	margin: 15px 0 0 0;
+}
+ul#completed:empty:after{
+	content: 'Тебе нужно завершить дело из списка.';
+}
+ul#todo:after,
+ul#completed:after{
+	width: 100%;
+	display: block;
+	text-align: center;
+	font-size: 12px;
+	color: #aaa;
+}

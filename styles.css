@@ -1,0 +1,192 @@
+:root {
+    --text: #cccccc;
+    --text-muted: #8f8f8f;
+    --heading: #ffffff;
+    --background: #000000;
+    --selection-text: #000000;
+    --selection-background: #ffffff;
+    --page-width: 42rem;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #cccccc;
+        --text-muted: #8f8f8f;
+        --heading: #ffffff;
+        --background: #000000;
+        --selection-text: #000000;
+        --selection-background: #ffffff;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: light dark;
+    -webkit-text-size-adjust: 100%;
+    font-size: clamp(16px, 2vw, 28px);
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    color: var(--selection-text);
+    background: var(--selection-background);
+}
+
+.page {
+    padding: 0.9rem 0.75rem 1.5rem;
+}
+
+.content {
+    max-width: var(--page-width);
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--heading);
+    line-height: 1.25;
+}
+
+h1 {
+    margin-bottom: 1.3rem;
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    margin-top: 2.2rem;
+    margin-bottom: 0.85rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    margin-top: 1.55rem;
+    margin-bottom: 0.45rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.35rem;
+}
+
+li {
+    margin: 0.14rem 0;
+}
+
+li::marker {
+    color: #596173;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--text-muted);
+    text-underline-offset: 0.14em;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+strong {
+    font-weight: 600;
+    color: var(--heading);
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.95em;
+}
+
+svg {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-bottom: 0.08rem;
+    margin-left: -0.05rem;
+    vertical-align: middle;
+}
+
+.links {
+    margin-top: 0.45rem;
+    margin-bottom: 1.8rem;
+}
+
+.external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    white-space: nowrap;
+}
+
+.page-nav {
+    margin-bottom: 1rem;
+}
+
+.nav-separator {
+    color: var(--text-muted);
+    padding: 0 0.3rem;
+}
+
+.post-meta,
+.post-excerpt {
+    color: var(--text-muted);
+}
+
+.post-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.post-list-item {
+    margin: 0 0 1rem;
+}
+
+.post-list-item::marker {
+    color: transparent;
+}
+
+.post h1 {
+    margin-bottom: 0.6rem;
+}
+
+@media (min-width: 640px) {
+    .page {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+}
