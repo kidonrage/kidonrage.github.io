@@ -1,10 +1,11 @@
 :root {
-    --text: #cccccc;
-    --text-muted: #8f8f8f;
-    --heading: #ffffff;
-    --background: #000000;
-    --selection-text: #000000;
-    --selection-background: #ffffff;
+    --text: #1b1b1b;
+    --text-muted: #666666;
+    --heading: #000000;
+    --background: #f7f7f4;
+    --selection-text: #f7f7f4;
+    --selection-background: #1b1b1b;
+    --marker: #7f8794;
     --page-width: 42rem;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
@@ -17,6 +18,7 @@
         --background: #000000;
         --selection-text: #000000;
         --selection-background: #ffffff;
+        --marker: #596173;
     }
 }
 
@@ -108,7 +110,7 @@ li {
 }
 
 li::marker {
-    color: #596173;
+    color: var(--marker);
 }
 
 a {
