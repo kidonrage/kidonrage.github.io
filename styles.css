@@ -1,25 +1,15 @@
 :root {
-    --text: #1b1b1b;
-    --text-muted: #666666;
-    --heading: #000000;
-    --background: #f7f7f4;
-    --selection-text: #f7f7f4;
-    --selection-background: #1b1b1b;
-    --marker: #7f8794;
+    --text: #cccccc;
+    --text-muted: #8f8f8f;
+    --heading: #ffffff;
+    --background: #000000;
+    --selection-text: #000000;
+    --selection-background: #ffffff;
+    --marker: #596173;
     --page-width: 42rem;
+    --photo-width: clamp(28rem, 40vw, 38rem);
+    --photo-fade-height: clamp(2.5rem, 8vw, 4.5rem);
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text: #cccccc;
-        --text-muted: #8f8f8f;
-        --heading: #ffffff;
-        --background: #000000;
-        --selection-text: #000000;
-        --selection-background: #ffffff;
-        --marker: #596173;
-    }
 }
 
 *,
@@ -29,7 +19,7 @@
 }
 
 html {
-    color-scheme: light dark;
+    color-scheme: dark;
     -webkit-text-size-adjust: 100%;
     font-size: clamp(16px, 2vw, 28px);
 }
@@ -53,8 +43,44 @@ body {
     padding: 0.9rem 0.75rem 1.5rem;
 }
 
+.page-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+}
+
 .content {
     max-width: var(--page-width);
+}
+
+.profile-rail {
+    position: relative;
+    width: 100%;
+    background: var(--background);
+    overflow: hidden;
+    border-radius: 0;
+}
+
+.profile-rail::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: var(--photo-fade-height);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--background));
+    pointer-events: none;
+}
+
+.profile-photo {
+    display: block;
+    width: 100%;
+    height: min(33svh, 16rem);
+    object-fit: contain;
+    object-position: center bottom;
+    border-radius: 0;
 }
 
 h1,
@@ -190,5 +216,36 @@ svg {
     .page {
         padding-right: 1.5rem;
         padding-left: 1.5rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .page--with-photo .page-shell {
+        max-width: calc(var(--page-width) + 3rem);
+        min-height: auto;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .page--with-photo .profile-rail {
+        position: relative;
+        width: var(--photo-width);
+        max-width: 100%;
+        align-self: center;
+        background: transparent;
+    }
+
+    .page--with-photo .profile-photo {
+        width: 100%;
+        height: auto;
+        max-height: 48vh;
+    }
+
+    .page--with-photo .content {
+        width: 100%;
+        max-width: var(--page-width);
+        padding: 0;
     }
 }
