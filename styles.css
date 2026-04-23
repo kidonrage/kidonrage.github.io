@@ -7,8 +7,9 @@
     --selection-background: #ffffff;
     --marker: #596173;
     --page-width: 42rem;
-    --photo-width: 33.333vw;
-    --photo-fade-height: clamp(2.5rem, 8vw, 4.5rem);
+    --profile-photo-size: clamp(7rem, 32vw, 9.5rem);
+    --profile-photo-size-wide: clamp(10rem, 18vw, 12.5rem);
+    --profile-photo-radius: clamp(1rem, 2.5vw, 1.5rem);
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
@@ -55,26 +56,27 @@ body {
     max-width: var(--page-width);
 }
 
-.profile-rail {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: transparent;
-    overflow: visible;
-    border-radius: 0;
+.profile-intro {
+    display: grid;
+    grid-template-columns: var(--profile-photo-size) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(0.9rem, 3vw, 1.5rem);
+    margin-bottom: 1.8rem;
 }
 
-.profile-rail::after {
-    display: none;
+.profile-intro-copy {
+    min-width: 0;
 }
 
 .profile-photo-frame {
-    width: clamp(10rem, 42vw, 14rem);
-    height: clamp(10rem, 42vw, 14rem);
-    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
-    border-radius: 50%;
+    border-radius: var(--profile-photo-radius);
+}
+
+.profile-photo-frame--intro {
+    max-width: var(--profile-photo-size);
 }
 
 .profile-photo {
@@ -82,9 +84,18 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 12%;
-    transform: scale(1.24);
+    object-position: center 18%;
+    transform: scale(1.42);
     transform-origin: center 20%;
+}
+
+.profile-intro h1 {
+    margin-bottom: 0.45rem;
+}
+
+.profile-intro .links {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 h1,
@@ -221,71 +232,13 @@ svg {
         padding-right: 1.5rem;
         padding-left: 1.5rem;
     }
-}
 
-@media (min-width: 960px) {
-    .page--with-photo {
-        padding: 0;
+    .profile-intro {
+        grid-template-columns: var(--profile-photo-size-wide) minmax(0, 1fr);
+        gap: clamp(1.1rem, 3vw, 1.75rem);
     }
 
-    .page--with-photo .page-shell {
-        max-width: none;
-        min-height: 100vh;
-        margin: 0;
-        flex-direction: row-reverse;
-        align-items: stretch;
-        gap: clamp(1.25rem, 3vw, 2.5rem);
-    }
-
-    .page--with-photo .profile-rail {
-        position: sticky;
-        top: 0;
-        flex: 0 0 var(--photo-width);
-        width: var(--photo-width);
-        max-width: min(33.333vw, 100%);
-        height: 100vh;
-        align-self: flex-start;
-        background: transparent;
-        overflow: hidden;
-    }
-
-    .page--with-photo .profile-rail::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        right: auto;
-        bottom: 0;
-        left: 0;
-        width: clamp(1.5rem, 4vw, 3rem);
-        height: auto;
-        background: linear-gradient(to right, var(--background), rgba(0, 0, 0, 0));
-        pointer-events: none;
-    }
-
-    .page--with-photo .profile-photo {
-        width: 100%;
-        height: 100%;
-        max-height: none;
-        object-fit: cover;
-        object-position: center top;
-        transform: none;
-    }
-
-    .page--with-photo .profile-photo-frame {
-        width: 100%;
-        height: 100%;
-        max-width: none;
-        overflow: hidden;
-        border-radius: 0;
-    }
-
-    .page--with-photo .content {
-        flex: 1 1 auto;
-        min-width: 0;
-        width: 100%;
-        max-width: none;
-        margin-right: auto;
-        padding: 0.9rem 1.5rem 1.5rem;
+    .profile-photo-frame--intro {
+        max-width: var(--profile-photo-size-wide);
     }
 }
