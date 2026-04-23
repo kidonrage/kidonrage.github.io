@@ -8,7 +8,7 @@
     --selection-background: #05070b;
     --marker: #697384;
     --photo-frame-background: #e6e8ee;
-    --page-width: 42rem;
+    --page-width: 46rem;
     --profile-photo-size: clamp(7rem, 32vw, 9.5rem);
     --profile-photo-size-wide: clamp(10rem, 18vw, 12.5rem);
     --profile-photo-radius: clamp(1rem, 2.5vw, 1.5rem);
@@ -159,15 +159,12 @@ p {
 ul {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    padding-left: 1.35rem;
+    padding-left: 0;
+    list-style: none;
 }
 
 li {
-    margin: 0.14rem 0;
-}
-
-li::marker {
-    color: var(--marker);
+    margin: 0.5rem 0;
 }
 
 a {
