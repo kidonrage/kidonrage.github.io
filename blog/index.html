@@ -12,6 +12,35 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="stylesheet" href="/styles.css">
+    <script>
+        (function () {
+            var supported = { en: true, ru: true };
+
+            function readCookie(name) {
+                var cookies = document.cookie ? document.cookie.split(";") : [];
+
+                for (var index = 0; index < cookies.length; index += 1) {
+                    var pair = cookies[index].trim().split("=");
+
+                    if (pair[0] === name) {
+                        return decodeURIComponent(pair.slice(1).join("="));
+                    }
+                }
+
+                return "";
+            }
+
+            try {
+                var saved = localStorage.getItem("site.language") || readCookie("site.language");
+                var isRoot = window.location.pathname === "/" || window.location.pathname === "/index.html";
+
+                if (isRoot && supported[saved] && saved !== "en") {
+                    window.location.replace("/" + saved + "/");
+                }
+            } catch (error) {
+            }
+        }());
+    </script>
 </head>
 <body>
     <main class="page">
@@ -31,5 +60,61 @@
             </div>
         </div>
     </main>
+    <script>
+        (function () {
+            var supported = { en: true, ru: true };
+            var currentLanguage = document.documentElement.lang;
+
+            function readCookie(name) {
+                var cookies = document.cookie ? document.cookie.split(";") : [];
+
+                for (var index = 0; index < cookies.length; index += 1) {
+                    var pair = cookies[index].trim().split("=");
+
+                    if (pair[0] === name) {
+                        return decodeURIComponent(pair.slice(1).join("="));
+                    }
+                }
+
+                return "";
+            }
+
+            function readSavedLanguage() {
+                try {
+                    return localStorage.getItem("site.language") || readCookie("site.language");
+                } catch (error) {
+                    return readCookie("site.language");
+                }
+            }
+
+            function saveLanguage(language) {
+                if (!supported[language]) {
+                    return;
+                }
+
+                try {
+                    localStorage.setItem("site.language", language);
+                } catch (error) {
+                }
+
+                document.cookie = "site.language=" + encodeURIComponent(language) + "; Path=/; Max-Age=31536000; SameSite=Lax";
+            }
+
+            var isRoot = window.location.pathname === "/" || window.location.pathname === "/index.html";
+            var savedLanguage = readSavedLanguage();
+
+            if (!isRoot || !supported[savedLanguage]) {
+                saveLanguage(currentLanguage);
+            }
+
+            document.addEventListener("click", function (event) {
+                var link = event.target.closest("[data-language-option]");
+
+                if (link) {
+                    saveLanguage(link.getAttribute("data-language-option"));
+                }
+            });
+        }());
+    </script>
 </body>
 </html>

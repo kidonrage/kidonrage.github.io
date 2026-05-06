@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Главная · Vladislav Eliseev</title>
+    <meta name="description" content="Резюме и профессиональный профиль Владислава Елисеева, iOS-инженера и product-focused generalist.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        (function () {
+            var supported = { en: true, ru: true };
+
+            function readCookie(name) {
+                var cookies = document.cookie ? document.cookie.split(";") : [];
+
+                for (var index = 0; index < cookies.length; index += 1) {
+                    var pair = cookies[index].trim().split("=");
+
+                    if (pair[0] === name) {
+                        return decodeURIComponent(pair.slice(1).join("="));
+                    }
+                }
+
+                return "";
+            }
+
+            try {
+                var saved = localStorage.getItem("site.language") || readCookie("site.language");
+                var isRoot = window.location.pathname === "/" || window.location.pathname === "/index.html";
+
+                if (isRoot && supported[saved] && saved !== "en") {
+                    window.location.replace("/" + saved + "/");
+                }
+            } catch (error) {
+            }
+        }());
+    </script>
+</head>
+<body>
+    <main class="page">
+        <div class="page-shell">
+            <div class="content">
+                <section class="profile-intro" aria-labelledby="profile-name">
+    <div class="profile-photo-frame profile-photo-frame--intro">
+        <img
+            class="profile-photo"
+            src="/assets/profile-photo-vert.jpg"
+            alt="Портрет Владислава Елисеева"
+        >
+    </div>
+    <div class="profile-intro-copy">
+        <div class="profile-title-row"><h1 id="profile-name">Владислав Елисеев</h1><div class="profile-controls"><nav class="language-switch" aria-label="Language"><a class="language-switch__link" href="/en/" data-language-option="en">EN</a><a class="language-switch__link" href="/ru/" data-language-option="ru" aria-current="true">RU</a></nav><a class="pdf-download-link" href="/assets/cv-ru.pdf" download>PDF <span aria-hidden="true">&#8595;</span></a></div></div>
+        <p class="links">
+            <a class="external-link" href="https://www.linkedin.com/in/eliseev-v/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span></a><br>
+            <a class="external-link" href="https://github.com/kidonrage" target="_blank" rel="noopener noreferrer"><span>GitHub</span></a><br>
+        </p>
+    </div>
+</section>
+<h2>Обо мне</h2>
+<ul>
+<li><strong>Senior iOS Engineer с 7+ годами опыта</strong> в промышленной разработке iOS-приложений.</li>
+<li>Работал с крупными приложениями (<strong>10M+ скачиваний</strong>) и международными стартапами.</li>
+<li>Фокусируюсь на качестве, производительности и UX. Поддерживал <strong>crash-free experience</strong> и код с <strong>80% test coverage</strong>.</li>
+</ul>
+<h2>Профессиональный опыт</h2>
+<div class="company-summary">
+    <h3>Аудиостримминг, NDA</h3>
+    <p>iOS-приложение аудиостриминга: 10M+ загрузок и 3M+ MAU</p>
+</div>
+<h3>Senior iOS Engineer, ноябрь 2024 – настоящее время</h3>
+<ul>
+<li>Разработал партнерский iOS SDK, который встраивает наш UI в сторонние приложения. Уложил SDK в <strong>5 MB – 5% от основного бандла приложения</strong>.</li>
+<li>Работал с <strong>6 стейкхолдерами</strong>, превращал продуктовые запросы в планы реализации и отвечал за delivery с командой из <strong>4 разработчиков</strong>.</li>
+<li>Улучшил hitch time ratio с <strong>12 до менее 5 мс/с (в 2.5 раза)</strong>.</li>
+<li>Поддерживал код без Auto Layout warnings, без hangs и <strong>crash-free</strong>. Покрывал ключевые сценарии UI-тестами для защиты от регресса.</li>
+</ul>
+<div class="company-summary">
+    <h3>Fashion-бренд, NDA</h3>
+    <p>iOS-приложение: 10M+ загрузок, рейтинг 4.9 в App Store. 700+ офлайн-магазинов в 5 странах</p>
+</div>
+<h3>Senior iOS Engineer, март 2023 – ноябрь 2024</h3>
+<ul>
+<li>Отвечал за delivery ключевых пользовательских фич в сценариях покупок и вовлечения, руководил <strong>2 junior разработчиками</strong>.</li>
+<li>Оптимизировал основные сетевые запросы, ускорил некоторые до <strong>2.5 раз</strong>.</li>
+<li>Улучшил отзывчивость главного BDUI-экрана, сократив <strong>hitches и hangs примерно в 2 раза</strong>.</li>
+<li>Разрабатывал core-сервисы для команды из <strong>6 разработчиков</strong>. Поддерживал код с <strong>80%+ test coverage</strong>.</li>
+</ul>
+<div class="company-summary">
+    <h3>AURA Devices</h3>
+    <p>Приложение-компаньон к устройствам для анализа состава тела</p>
+</div>
+<h3>Middle iOS Engineer, май 2021 – март 2023</h3>
+<ul>
+<li>Интегрировал подписки, которые принесли компании <strong>$50,000+ дохода</strong>.</li>
+<li>Реализовал <strong>on-device алгоритм на базе поиска по графу</strong> для персональных рекомендаций.</li>
+<li>Разработал и оптимизировал <strong>графики на Core Graphics</strong> с плавным скроллом без хитчей.</li>
+<li>Сократил <strong>ошибки парсинга Bluetooth-данных</strong> в критичном Apple Watch-флоу на <strong>27%</strong>.</li>
+</ul>
+<div class="company-summary">
+    <h3>Ubibi</h3>
+    <p>iOS-приложение-маркетплейс для автомобилистов</p>
+</div>
+<h3>Middle iOS Engineer, май 2020 – май 2021</h3>
+<ul>
+<li><strong>С нуля выстроил архитектуру приложения</strong> на MVVM, RxSwift, переиспользуемых UI-компонентах и сложной системе фильтров.</li>
+<li>Автоматизировал <strong>ключевые dev-процессы</strong>, в т.ч. <strong>импорт дизайн-ассетов</strong> и <strong>кодогенерацию API-слоя</strong> по OpenAPI-спецификации.</li>
+</ul>
+<div class="company-summary">
+    <h3>Fogstream</h3>
+    <p>iOS-приложение для электронной подписи документов</p>
+</div>
+<h3>Junior iOS Engineer, март 2019 – май 2020</h3>
+<ul>
+<li>Интегрировал <strong>криптографическую C-библиотеку</strong> в кодовую базу iOS-проекта.</li>
+<li>Исправил трудновоспроизводимый crash, связанный с <strong>ручным управлением памятью</strong>.</li>
+</ul>
+<h2>Проекты и достижения</h2>
+<ul>
+<li><strong>Trackerus:</strong> разработал приложение для учета времени с <strong>6.4K+ загрузок</strong> и рейтингом <strong>4.7</strong>. <a class="external-link" href="https://apps.apple.com/ru/app/trackerus-your-time-tracker/id1584716777" target="_blank" rel="noopener noreferrer"><span>App Store</span></a></li>
+<li><strong>Fremo:</strong> разработал iOS-приложение для фрилансеров с <strong>рейтингом 5.0</strong>. <a class="external-link" href="https://apps.apple.com/ru/app/fremo-income-time-tracker/id6451326751" target="_blank" rel="noopener noreferrer"><span>App Store</span></a></li>
+<li><strong>Соревнования:</strong> финалист Tinkoff Solutions Cup 2023 и Yandex Cup 2023. <a class="external-link" href="https://vk.com/wall-206545859_267" target="_blank" rel="noopener noreferrer"><span>Интервью</span></a></li>
+<li><strong>Хакатоны:</strong> победитель Amur Digital Hack и Digital Breakthrough.</li>
+<li><strong>GDG Devfest:</strong> выступил с докладом о Kotlin Multiplatform и провел SwiftUI-воркшоп. <a class="external-link" href="https://youtu.be/2B4a_HpuGas?si=KG8IEqidLvz1NxLG" target="_blank" rel="noopener noreferrer"><span>YouTube</span></a></li>
+<li><strong>Статьи:</strong> соавтор материала SkillFactory о выборе между нативными приложениями и PWA. <a class="external-link" href="https://blog.skillfactory.ru/nativnoe-vs-progressivnoe-prilozhenie-chto-vybrat/" target="_blank" rel="noopener noreferrer"><span>Статья</span></a></li>
+</ul>
+<h2>Образование</h2>
+<p><strong>Магистр, Прикладная информатика, Университет ИТМО</strong></p>
+<h2>Инструменты</h2>
+<ul>
+<li><strong>Языки и фреймворки:</strong> Swift, UIKit, SwiftUI</li>
+<li><strong>Архитектура:</strong> modular apps, DI, state management, scalable UI patterns</li>
+<li><strong>Инфраструктура:</strong> analytics, feature flags, remote config, release tooling</li>
+<li><strong>Производительность:</strong> Instruments, startup time, memory, scrolling/rendering performance</li>
+<li><strong>Тестирование:</strong> unit tests, UI tests, regression prevention</li>
+<li><strong>Доставка и релизы:</strong> CI/CD, App Store releases, observability, crash monitoring</li>
+<li><strong>Процессы:</strong> product thinking, technical planning, mentoring</li>
+</ul>
+
+            </div>
+        </div>
+    </main>
+    <script>
+        (function () {
+            var supported = { en: true, ru: true };
+            var currentLanguage = document.documentElement.lang;
+
+            function readCookie(name) {
+                var cookies = document.cookie ? document.cookie.split(";") : [];
+
+                for (var index = 0; index < cookies.length; index += 1) {
+                    var pair = cookies[index].trim().split("=");
+
+                    if (pair[0] === name) {
+                        return decodeURIComponent(pair.slice(1).join("="));
+                    }
+                }
+
+                return "";
+            }
+
+            function readSavedLanguage() {
+                try {
+                    return localStorage.getItem("site.language") || readCookie("site.language");
+                } catch (error) {
+                    return readCookie("site.language");
+                }
+            }
+
+            function saveLanguage(language) {
+                if (!supported[language]) {
+                    return;
+                }
+
+                try {
+                    localStorage.setItem("site.language", language);
+                } catch (error) {
+                }
+
+                document.cookie = "site.language=" + encodeURIComponent(language) + "; Path=/; Max-Age=31536000; SameSite=Lax";
+            }
+
+            var isRoot = window.location.pathname === "/" || window.location.pathname === "/index.html";
+            var savedLanguage = readSavedLanguage();
+
+            if (!isRoot || !supported[savedLanguage]) {
+                saveLanguage(currentLanguage);
+            }
+
+            document.addEventListener("click", function (event) {
+                var link = event.target.closest("[data-language-option]");
+
+                if (link) {
+                    saveLanguage(link.getAttribute("data-language-option"));
+                }
+            });
+        }());
+    </script>
+</body>
+</html>

@@ -179,7 +179,7 @@ body {
 }
 
 .profile-intro h1 {
-    margin-bottom: 0.45rem;
+    margin-bottom: 0;
 }
 
 .profile-intro .links {
@@ -304,6 +304,42 @@ svg {
     white-space: nowrap;
 }
 
+.profile-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.7rem;
+    margin-bottom: 0.45rem;
+}
+
+.profile-controls {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    line-height: 1;
+}
+
+.language-switch {
+    display: inline-flex;
+    gap: 0.45rem;
+}
+
+.language-switch__link,
+.pdf-download-link {
+    display: inline;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-color: var(--text-muted);
+    text-underline-offset: 0.14em;
+}
+
 .page-nav {
     margin-bottom: 1rem;
 }
@@ -348,5 +384,72 @@ svg {
 
     .profile-photo-frame--intro {
         max-width: var(--profile-photo-size-wide);
+    }
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 8mm;
+    }
+
+    :root {
+        color-scheme: light;
+        --text: #1a1d24;
+        --text-muted: #5e6675;
+        --heading: #05070b;
+        --background: #ffffff;
+        --company-card-background: #eef1f3;
+        --page-width: 46rem;
+        --profile-photo-size: 5.6rem;
+        --profile-photo-size-wide: 8rem;
+    }
+
+    html {
+        font-size: 13px;
+    }
+
+    body {
+        background: var(--background);
+        color: var(--text);
+        line-height: 1.5;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .page {
+        padding: 0;
+    }
+
+    .page-shell {
+        max-width: var(--page-width);
+        margin: 0 auto;
+    }
+
+    .content {
+        max-width: var(--page-width);
+    }
+
+    .profile-controls {
+        display: none;
+    }
+
+    .company-summary {
+        break-inside: avoid;
+    }
+
+    a {
+        color: inherit;
+        text-decoration-color: var(--text-muted);
+    }
+
+    section,
+    .company-summary,
+    h2,
+    h3,
+    p,
+    li {
+        orphans: 2;
+        widows: 2;
     }
 }
